@@ -4,6 +4,6 @@ public class Wizard {
 	public String name;
 	public int life;
 	public int attack_power;
-	public String spell;
+	Spell spell;
 	public String potion;
 }

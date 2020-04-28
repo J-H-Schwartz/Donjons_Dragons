@@ -4,6 +4,6 @@ public class Warrior {
 	public String name;
 	public int life;
 	public int attack_power;
-	public String weapon;
+	Weapon weapon;
 	public String shield;
 }
