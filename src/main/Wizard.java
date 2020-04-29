@@ -1,5 +1,9 @@
 package main;
 
+/**
+ * Wizard object Data class.
+ * 
+ */
 public class Wizard {
 	private String name;
 	private int life;
@@ -14,7 +18,8 @@ public class Wizard {
 	public Potion potion;
 
 	public String toString() {
-		return "Personnage " + this.name + " Life : " + this.life + " Attack Power : " + this.attack_power + " " + this.spell.getName() + " Potion : " + this.potion.getName();
+		return "Personnage " + this.name + " Life : " + this.life + " Attack Power : " + this.attack_power + " "
+				+ this.spell.getName() + " Potion : " + this.potion.getName();
 	}
 
 	public Wizard() {
@@ -26,7 +31,7 @@ public class Wizard {
 	}
 
 	public Wizard(String name_arg) {
-		if (name_arg.equals(EMPTY_STRING)){
+		if (name_arg.equals(EMPTY_STRING)) {
 			throw new IllegalArgumentException("Invalid Parameters.");
 		}
 		this.name = name_arg;
@@ -37,8 +42,8 @@ public class Wizard {
 	}
 
 	public Wizard(String name_arg, int life_arg, int attack_power_arg) {
-		if (name_arg.equals(EMPTY_STRING) || MIN_LIFE > life_arg || MAX_LIFE < life_arg || MIN_ATTACK_POWER > attack_power_arg
-				|| MAX_ATTACK_POWER < attack_power_arg) {
+		if (name_arg.equals(EMPTY_STRING) || MIN_LIFE > life_arg || MAX_LIFE < life_arg
+				|| MIN_ATTACK_POWER > attack_power_arg || MAX_ATTACK_POWER < attack_power_arg) {
 			throw new IllegalArgumentException("Invalid Parameters.");
 		}
 		this.name = name_arg;
@@ -47,35 +52,35 @@ public class Wizard {
 		this.spell = new Spell();
 		this.potion = new Potion();
 	}
-	
+
 	public void setName(String new_name) {
 		this.name = new_name;
 	}
-	
+
 	public String getName() {
 		return this.name;
 	}
-	
+
 	public void setLife(int new_life) {
 		this.life = new_life;
 	}
-	
+
 	public int getLife() {
 		return this.life;
 	}
-	
+
 	public void setAttackPower(int new_attack_power) {
 		this.attack_power = new_attack_power;
 	}
-	
+
 	public int getAttackPower() {
 		return this.attack_power;
 	}
-	
+
 	public void setImageUrl(String new_image_url) {
 		this.image_url = new_image_url;
 	}
-	
+
 	public String getImageUrl() {
 		return this.image_url;
 	}

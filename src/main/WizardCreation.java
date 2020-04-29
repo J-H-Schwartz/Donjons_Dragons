@@ -1,6 +1,10 @@
 package main;
-
 import java.io.IOException;
+/**
+ * Wizards creation class, extends CharacterCreation.
+ * 
+ */
+
 
 public class WizardCreation extends CharacterCreation {
 	
@@ -8,7 +12,14 @@ public class WizardCreation extends CharacterCreation {
 		System.out.println("Création du personnage " + wizard.getName() + " Life : " + wizard.getLife()
 				+ " Attack power : " + wizard.getAttackPower());
 	}
-
+	
+	/**
+	 * Displays Wizard Object Image.
+	 *
+	 *@param	wizard		the object from which you want to show image.
+	 *
+	 *@return	None		this method has no return.
+	 */
 	private static void charImageDisplay(Wizard wizard) {
 		// Tries to display image pointed by URL.
 		try {
@@ -19,6 +30,14 @@ public class WizardCreation extends CharacterCreation {
 		}
 	}
 	
+	/**
+	 * Creates new Wizard object with the given valid parameters.
+	 *
+	 * @param name         object name.
+	 * @param life         object life.
+	 * @param attack_force object attack force.
+	 * @return Wizard returns a new Wizard Object.
+	 */
 	public static Wizard wizardCreation(String name, int life, int attack_force) {
 		// Tries to create new Wizard object with all parameters.
 		Wizard wizard;

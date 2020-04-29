@@ -1,9 +1,13 @@
 package main;
-
 import java.util.ArrayList;
 import java.util.Scanner;
+/**
+ * Character Updating class.
+ * 
+ */
 
-public class CharacterUpdate extends MainMenu{
+
+public class CharacterUpdate {
 	private static final int WIZARD_FOUND = 1;
 	private static final int WARRIOR_FOUND = 2;
 	private static final int NO_MATCH_FOUND = 0;
@@ -13,9 +17,17 @@ public class CharacterUpdate extends MainMenu{
 	private static final String ATTACK_POWER = "F";
 	private static final String RETURN = "R";
 
-	
-
-	public static void characterUpdate(ArrayList<Warrior> warriors, ArrayList<Wizard> wizards,Scanner scanner) {
+	/**
+	 * Search by name through the characters lists and allow to update found
+	 * character informations.
+	 *
+	 * @param warriors the ArrayList containing Warriors Objects.
+	 * @param wizards  the ArrayList containing Wizards Objects.
+	 * @param scanner  a Scanner Object used to get inputs.
+	 *
+	 * @return None this method has no return.
+	 */
+	public static void characterUpdate(ArrayList<Warrior> warriors, ArrayList<Wizard> wizards, Scanner scanner) {
 		int result_index;
 		int int_input;
 		int[] result_match_index = new int[2];
@@ -34,7 +46,8 @@ public class CharacterUpdate extends MainMenu{
 				System.out.println("Aucun personnage avec ce nom n'a été trouvé.");
 				continue;
 			} else {
-				System.out.println("Quel champ souhaitez-vous modifier ?\n(N)om\n(V)ie\n(F)orce d'attaque\n(U)rl d'image\n(R)etour");
+				System.out.println(
+						"Quel champ souhaitez-vous modifier ?\n(N)om\n(V)ie\n(F)orce d'attaque\n(U)rl d'image\n(R)etour");
 				input = scanner.nextLine();
 				if (input.equals(RETURN)) {
 					System.out.println("Retour.");

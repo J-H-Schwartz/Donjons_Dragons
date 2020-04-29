@@ -1,5 +1,9 @@
 package main;
 
+/**
+ * Potion object Data class.
+ * 
+ */
 public class Potion {
 	private String name;
 	private int health_increase;

@@ -1,6 +1,9 @@
 package main;
-
 import java.io.IOException;
+/**
+ * Warrior creation class, extends CharacterCreation.
+ * 
+ */
 
 public class WarriorCreation extends CharacterCreation {
 
@@ -9,6 +12,13 @@ public class WarriorCreation extends CharacterCreation {
 				+ " Attack power : " + warrior.getAttackPower());
 	}
 
+	/**
+	 * Displays Warrior Object Image.
+	 *
+	 * @param warrior the object from which you want to show image.
+	 *
+	 * @return None this method has no return.
+	 */
 	private static void charImageDisplay(Warrior warrior) {
 		// Tries to display image pointed by URL.
 		try {
@@ -19,6 +29,14 @@ public class WarriorCreation extends CharacterCreation {
 		}
 	}
 
+	/**
+	 * Creates new Warrior object with the given valid parameters.
+	 *
+	 * @param name         object name.
+	 * @param life         object life.
+	 * @param attack_force object attack force.
+	 * @return Warrior returns a new Warrior Object.
+	 */
 	public static Warrior warriorCreation(String name, int life, int attack_force) {
 		Warrior warrior;
 		// Tries to create new Warrior object with all parameters.
@@ -37,7 +55,7 @@ public class WarriorCreation extends CharacterCreation {
 				warrior = new Warrior();
 			}
 		}
-		
+
 		// Display image pointed by URL
 		charImageDisplay(warrior);
 		charInfosPrint(warrior);

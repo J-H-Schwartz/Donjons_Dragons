@@ -1,15 +1,28 @@
 package main;
-
 import java.util.ArrayList;
 import java.util.Scanner;
+/**
+ * Character Creation class.
+ * 
+ */
 
-public class CharacterCreation extends MainMenu{
+
+public class CharacterCreation {
 	private static final String WAR = "W";
 	private static final String WIZ = "D";
 	private static final String QUIT = "Q";
 	private static Wizard wizard;
 	private static Warrior warrior;
 
+	/**
+	 * Get inputs in order to create new characters.
+	 *
+	 * @param warriors the ArrayList containing Warriors Objects.
+	 * @param wizards  the ArrayList containing Wizards Objects.
+	 * @param scanner  a Scanner Object used to get inputs.
+	 *
+	 * @return None this method has no return.
+	 */
 	public static void characterCreation(ArrayList<Warrior> warriors, ArrayList<Wizard> wizards, Scanner scanner) {
 		int life_selection;
 		int attack_power_selection;

@@ -1,11 +1,25 @@
 package main;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.stream.Collectors;
+/**
+ * Character Listing class.
+ * 
+ */
 
-public class CharacterShow extends MainMenu{
-	public static void characterShow(ArrayList<Warrior> warriors, ArrayList<Wizard> wizards,Scanner scanner) {
+
+public class CharactersListShow {
+
+	/**
+	 * Shows List from selected type (Wizards/Warriors).
+	 *
+	 * @param warriors the ArrayList containing Warriors Objects.
+	 * @param wizards  the ArrayList containing Wizards Objects.
+	 * @param scanner  Scanner Objet to get inputs.
+	 *
+	 * @return None this method has no return
+	 */
+	public static void characterShow(ArrayList<Warrior> warriors, ArrayList<Wizard> wizards, Scanner scanner) {
 		System.out.println("Quelle liste souhaitez vous consulter ?\n(W)arriors\nWizar(D)s");
 		String input = scanner.nextLine();
 		if (input.equals("W")) {
