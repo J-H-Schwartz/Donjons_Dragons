@@ -5,7 +5,11 @@ package main;
  * 
  */
 public class Weapon {
+	
+	/** Weapon object name */
 	private String name;
+	
+	/** Weapon object effect */
 	private int damage;
 
 	public Weapon() {

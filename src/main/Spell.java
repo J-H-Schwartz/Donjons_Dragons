@@ -5,7 +5,11 @@ package main;
  * 
  */
 public class Spell {
+	
+	/** Spell object name */
 	private String name;
+	
+	/** Spell object effect */
 	private int damage;
 
 	public Spell() {

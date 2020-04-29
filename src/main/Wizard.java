@@ -5,16 +5,38 @@ package main;
  * 
  */
 public class Wizard {
+
+	/** Wizard object name */
 	private String name;
+
+	/** Wizard object life */
 	private int life;
+
+	/** Wizard object Attack power */
 	private int attack_power;
+
+	/** Empty string constant */
 	private static final String EMPTY_STRING = "";
+
+	/** Wizard max life constant */
 	private static final int MAX_LIFE = 6;
+
+	/** Wizard min life constant */
 	private static final int MIN_LIFE = 3;
+
+	/** Wizard max Attack power constant */
 	private static final int MAX_ATTACK_POWER = 15;
+
+	/** Wizard min Attack power constant */
 	private static final int MIN_ATTACK_POWER = 8;
+
+	/** Wizard object Image url */
 	private String image_url = "./medias/ElveWizard.png";
+
+	/** Wizard object Spell object */
 	public Spell spell;
+
+	/** Wizard object Potion object */
 	public Potion potion;
 
 	public String toString() {

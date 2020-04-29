@@ -1,17 +1,27 @@
 package main;
+
 import java.util.ArrayList;
 import java.util.Scanner;
+
 /**
  * Character Creation class.
  * 
  */
 
-
 public class CharacterCreation {
+	/** Input constant */
 	private static final String WAR = "W";
+
+	/** Input constant */
 	private static final String WIZ = "D";
+
+	/** Input constant */
 	private static final String QUIT = "Q";
+
+	/** Wizard object for creation */
 	private static Wizard wizard;
+
+	/** Warrior object for creation */
 	private static Warrior warrior;
 
 	/**
@@ -21,11 +31,13 @@ public class CharacterCreation {
 	 * @param wizards  the ArrayList containing Wizards Objects.
 	 * @param scanner  a Scanner Object used to get inputs.
 	 *
-	 * @return None this method has no return.
 	 */
 	public static void characterCreation(ArrayList<Warrior> warriors, ArrayList<Wizard> wizards, Scanner scanner) {
+		/** Life input var */
 		int life_selection;
+		/** Attack power input var */
 		int attack_power_selection;
+
 		// Gets Character Selection Input
 		System.out.println("Quel personnage souhaitez-vous créer ? (W)arrior or Wizar(D) ou (Q)uitter");
 		String char_selection = scanner.nextLine();

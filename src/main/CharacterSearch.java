@@ -1,4 +1,5 @@
 package main;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -9,8 +10,14 @@ import java.util.Scanner;
  */
 
 public class CharacterSearch {
+
+	/** Wizard search result constant */
 	private static final int WIZARD_FOUND = 1;
+
+	/** Warrior search result constant */
 	private static final int WARRIOR_FOUND = 2;
+
+	/** No search result constant */
 	private static final int NO_MATCH_FOUND = 0;
 
 	/**
@@ -18,7 +25,6 @@ public class CharacterSearch {
 	 *
 	 * @param warrior the object from which you want to show image.
 	 *
-	 * @return None this method has no return.
 	 */
 	private static void charImageDisplay(Warrior warrior) {
 		// Tries to display image pointed by URL.
@@ -35,7 +41,6 @@ public class CharacterSearch {
 	 *
 	 * @param wizard the object from which you want to show image.
 	 *
-	 * @return None this method has no return.
 	 */
 	private static void charImageDisplay(Wizard wizard) {
 		// Tries to display image pointed by URL.
@@ -54,17 +59,21 @@ public class CharacterSearch {
 	 * @param wizards  the ArrayList containing Wizards Objects.
 	 * @param scanner  a Scanner Object used to get inputs.
 	 *
-	 * @return None this method has no return.
 	 */
 	public static void search(ArrayList<Warrior> warriors, ArrayList<Wizard> wizards, Scanner scanner) {
+		/** Search result array, contains [match_status, match_index] */
 		int[] result_match_index = new int[2];
+
 		System.out.println("Entrez le nom du personnage recherché. Valider un champ vide pour quitter.");
 		String input = scanner.nextLine();
+
 		if (input.equals("")) {
 			System.out.println("Retour au menu précédent.");
 			return;
 		}
+
 		result_match_index = CharacterSearch.characterSearch(wizards, warriors, input);
+
 		if (result_match_index[0] == WARRIOR_FOUND) {
 			System.out.println(warriors.get(result_match_index[1]).toString());
 			charImageDisplay(warriors.get(result_match_index[1]));
@@ -85,7 +94,9 @@ public class CharacterSearch {
 	 *         matching object.
 	 */
 	public static int[] characterSearch(ArrayList<Wizard> wizards, ArrayList<Warrior> warriors, String search) {
+		/** Search result array, contains [match_status, match_index] */
 		int[] result_match_index = new int[2];
+
 		for (int match_index = 0; match_index < wizards.size(); match_index++) {
 			if (wizards.get(match_index).getName().equals(search)) {
 				result_match_index[0] = WIZARD_FOUND;

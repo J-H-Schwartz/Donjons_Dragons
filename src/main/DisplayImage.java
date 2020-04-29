@@ -1,4 +1,5 @@
 package main;
+
 import java.awt.FlowLayout;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -7,11 +8,11 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+
 /**
  * Image Displaying (Jframe) class.
  * 
  */
-
 
 public class DisplayImage {
 	/**

@@ -5,7 +5,11 @@ package main;
  * 
  */
 public class Shield {
+
+	/** Shield object name */
 	private String name;
+
+	/** Shield object effect */
 	private int block;
 
 	public Shield() {

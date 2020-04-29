@@ -1,24 +1,24 @@
 package main;
+
 import java.io.IOException;
+
 /**
  * Wizards creation class, extends CharacterCreation.
  * 
  */
 
-
 public class WizardCreation extends CharacterCreation {
-	
+
 	private static void charInfosPrint(Wizard wizard) {
 		System.out.println("Création du personnage " + wizard.getName() + " Life : " + wizard.getLife()
 				+ " Attack power : " + wizard.getAttackPower());
 	}
-	
+
 	/**
 	 * Displays Wizard Object Image.
 	 *
-	 *@param	wizard		the object from which you want to show image.
+	 * @param wizard the object from which you want to show image.
 	 *
-	 *@return	None		this method has no return.
 	 */
 	private static void charImageDisplay(Wizard wizard) {
 		// Tries to display image pointed by URL.
@@ -29,7 +29,7 @@ public class WizardCreation extends CharacterCreation {
 			System.out.println("Image loading failed");
 		}
 	}
-	
+
 	/**
 	 * Creates new Wizard object with the given valid parameters.
 	 *
@@ -63,5 +63,4 @@ public class WizardCreation extends CharacterCreation {
 		return wizard;
 	}
 
-	
 }

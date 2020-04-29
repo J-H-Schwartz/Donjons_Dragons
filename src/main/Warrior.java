@@ -5,16 +5,38 @@ package main;
  * 
  */
 public class Warrior {
+
+	/** Warrior object name */
 	private String name;
+
+	/** Warrior object life */
 	private int life;
+
+	/** Warrior object Attack Power */
 	private int attack_power;
+
+	/** Empty string constant */
 	private static final String EMPTY_STRING = "";
+
+	/** Warrior max life constant */
 	private static final int MAX_LIFE = 10;
+
+	/** Warrior min life constant */
 	private static final int MIN_LIFE = 5;
+
+	/** Warrior max Attack power constant */
 	private static final int MAX_ATTACK_POWER = 10;
+
+	/** Warrior max Attack power constant */
 	private static final int MIN_ATTACK_POWER = 5;
+
+	/** Warrior object Image url */
 	private String image_url = "./medias/DwarfWarrior.png";
+
+	/** Warrior object Weapon object */
 	public Weapon weapon;
+
+	/** Warrior object Shield object */
 	public Shield shield;
 
 	public String toString() {

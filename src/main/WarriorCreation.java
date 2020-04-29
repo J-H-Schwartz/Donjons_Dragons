@@ -1,5 +1,7 @@
 package main;
+
 import java.io.IOException;
+
 /**
  * Warrior creation class, extends CharacterCreation.
  * 
@@ -17,7 +19,6 @@ public class WarriorCreation extends CharacterCreation {
 	 *
 	 * @param warrior the object from which you want to show image.
 	 *
-	 * @return None this method has no return.
 	 */
 	private static void charImageDisplay(Warrior warrior) {
 		// Tries to display image pointed by URL.

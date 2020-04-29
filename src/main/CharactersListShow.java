@@ -1,12 +1,13 @@
 package main;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.stream.Collectors;
+
 /**
  * Character Listing class.
  * 
  */
-
 
 public class CharactersListShow {
 
@@ -17,11 +18,12 @@ public class CharactersListShow {
 	 * @param wizards  the ArrayList containing Wizards Objects.
 	 * @param scanner  Scanner Objet to get inputs.
 	 *
-	 * @return None this method has no return
 	 */
 	public static void characterShow(ArrayList<Warrior> warriors, ArrayList<Wizard> wizards, Scanner scanner) {
+
 		System.out.println("Quelle liste souhaitez vous consulter ?\n(W)arriors\nWizar(D)s");
 		String input = scanner.nextLine();
+
 		if (input.equals("W")) {
 			System.out.println("Liste de Warriors :");
 //			for(int i=0; i < warriors.size(); i++){
