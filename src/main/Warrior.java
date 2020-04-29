@@ -25,6 +25,9 @@ public class Warrior {
 	}
 
 	public Warrior(String name_arg) {
+		if (name_arg.equals("")){
+			throw new IllegalArgumentException("Invalid Parameters.");
+		}
 		this.name = name_arg;
 		this.life = 10;
 		this.attack_power = 5;
@@ -33,7 +36,7 @@ public class Warrior {
 	}
 	
 	public Warrior(String name_arg, int life_arg, int attack_power_arg) {
-		if (min_life > life_arg || max_life < life_arg || min_attack_power > attack_power_arg || max_attack_power < attack_power_arg){
+		if (name_arg.equals("") || min_life > life_arg || max_life < life_arg || min_attack_power > attack_power_arg || max_attack_power < attack_power_arg){
 			throw new IllegalArgumentException("Invalid Parameters.");
 		}
 		this.name = name_arg;
