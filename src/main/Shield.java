@@ -5,7 +5,7 @@ public class Shield {
 	private int block;
 	
 	public Shield() {
-		name = "Spark";
+		name = "Wooden Shield";
 		block = 1;
 	}
 	
@@ -14,19 +14,19 @@ public class Shield {
 		block = damage_arg;
 	}
 	
-	void setName(String new_name) {
+	public void setName(String new_name) {
 		this.name = new_name;
 	}
 	
-	String getName() {
+	public String getName() {
 		return this.name;
 	}
 	
-	void setBlock(int new_block) {
+	public void setBlock(int new_block) {
 		this.block = new_block;
 	}
 	
-	int getBlock() {
+	public int getBlock() {
 		return this.block;
 	}
 }

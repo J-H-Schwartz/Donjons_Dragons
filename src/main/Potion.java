@@ -14,19 +14,19 @@ public class Potion {
 		health_increase = health_arg;
 	}
 	
-	void setName(String new_name) {
+	public void setName(String new_name) {
 		this.name = new_name;
 	}
 	
-	String getName() {
+	public String getName() {
 		return this.name;
 	}
 	
-	void setLife(int new_health_increase) {
+	public void setLife(int new_health_increase) {
 		this.health_increase = new_health_increase;
 	}
 	
-	int getLife() {
+	public int getLife() {
 		return this.health_increase;
 	}
 }

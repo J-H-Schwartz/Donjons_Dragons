@@ -14,19 +14,19 @@ public class Weapon {
 		damage = damage_arg;
 	}
 	
-	void setName(String new_name) {
+	public void setName(String new_name) {
 		this.name = new_name;
 	}
 	
-	String getName() {
+	public String getName() {
 		return this.name;
 	}
 	
-	void setDamage(int new_damage) {
+	public void setDamage(int new_damage) {
 		this.damage = new_damage;
 	}
 	
-	int getDamage() {
+	public int getDamage() {
 		return this.damage;
 	}
 }

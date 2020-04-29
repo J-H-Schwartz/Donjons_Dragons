@@ -1,8 +1,8 @@
 package main;
 
 public class Spell {
-	String name;
-	int damage;
+	private String name;
+	private int damage;
 	
 	public Spell() {
 		name = "Spark";
@@ -14,19 +14,19 @@ public class Spell {
 		damage = damage_arg;
 	}
 	
-	void setName(String new_name) {
+	public void setName(String new_name) {
 		this.name = new_name;
 	}
 	
-	String getName() {
+	public String getName() {
 		return this.name;
 	}
 	
-	void setDamage(int new_damage) {
+	public void setDamage(int new_damage) {
 		this.damage = new_damage;
 	}
 	
-	int getDamage() {
+	public int getDamage() {
 		return this.damage;
 	}
 }
