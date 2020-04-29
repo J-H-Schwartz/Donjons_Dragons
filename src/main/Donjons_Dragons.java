@@ -45,20 +45,20 @@ public class Donjons_Dragons {
 			if (name_selection.equals("")) {
 				if (char_selection.equals("W")) {
 					Warrior warrior = new Warrior();
-					System.out.println("Création du personnage guerrier" + warrior.name);
+					System.out.println("Création du personnage guerrier" + warrior.getName());
 					warriors.add(warriors_number, warrior);
 					try {
-						DisplayImage image = new DisplayImage(warrior.image_url);
+						new DisplayImage(warrior.getImageUrl());
 					} catch (IOException e) {
 						System.out.println("Image loading failed");
 					}
 					++warriors_number;
 				} else if (char_selection.equals("D")) {
 					Wizard wizard = new Wizard();
-					System.out.println("Création du personnage sorcier" + wizard.name);
+					System.out.println("Création du personnage sorcier" + wizard.getName());
 					wizards.add(wizards_number, wizard);
 					try {
-						DisplayImage image = new DisplayImage(wizard.image_url);
+						new DisplayImage(wizard.getImageUrl());
 					} catch (IOException e) {
 						System.out.println("Image loading failed");
 					}
@@ -67,20 +67,20 @@ public class Donjons_Dragons {
 			} else if (!name_selection.equals("") && (life_selection == 0 || attack_power_selection == 0)) {
 				if (char_selection.equals("W")) {
 					Warrior warrior = new Warrior(name_selection);
-					System.out.println("Création du personnage guerrier" + warrior.name);
+					System.out.println("Création du personnage guerrier" + warrior.getName());
 					warriors.add(warriors_number, warrior);
 					try {
-						DisplayImage image = new DisplayImage(warrior.image_url);
+						new DisplayImage(warrior.getImageUrl());
 					} catch (IOException e) {
 						System.out.println("Image loading failed");
 					}
 					++warriors_number;
 				} else if (char_selection.equals("D")) {
 					Wizard wizard = new Wizard(name_selection);
-					System.out.println("Création du personnage sorcier" + wizard.name);
+					System.out.println("Création du personnage sorcier" + wizard.getName());
 					wizards.add(wizards_number, wizard);
 					try {
-						DisplayImage image = new DisplayImage(wizard.image_url);
+						new DisplayImage(wizard.getImageUrl());
 					} catch (IOException e) {
 						System.out.println("Image loading failed");
 					}
@@ -90,20 +90,20 @@ public class Donjons_Dragons {
 				try {
 					if (char_selection.equals("W")) {
 						Warrior warrior = new Warrior(name_selection, life_selection, attack_power_selection);
-						System.out.println("Création du personnage " + warrior.name + " Life = " + warrior.life + " Attack power : " + warrior.attack_power);
+						System.out.println("Création du personnage " + warrior.getName() + " Life = " + warrior.getLife() + " Attack power : " + warrior.getAttackPower());
 						warriors.add(warriors_number, warrior);
 						try {
-							DisplayImage image = new DisplayImage(warrior.image_url);
+							new DisplayImage(warrior.getImageUrl());
 						} catch (IOException e) {
 							System.out.println("Image loading failed");
 						}
 						++warriors_number;
 					} else if (char_selection.equals("D")) {
 						Wizard wizard = new Wizard(name_selection, life_selection, attack_power_selection);
-						System.out.println("Création du personnage " + wizard.name + " Life : " + wizard.life + " Attack power : " + wizard.attack_power);
+						System.out.println("Création du personnage " + wizard.getName() + " Life : " + wizard.getLife() + " Attack power : " + wizard.getAttackPower());
 						wizards.add(wizards_number, wizard);
 						try {
-							DisplayImage image = new DisplayImage(wizard.image_url);
+							new DisplayImage(wizard.getImageUrl());
 						} catch (IOException e) {
 							System.out.println("Image loading failed");
 						}
@@ -113,20 +113,20 @@ public class Donjons_Dragons {
 					System.out.println("Argument de vie ou d'attaque invalide.");
 					if (char_selection.equals("W")) {
 						Warrior warrior = new Warrior(name_selection);
-						System.out.println("Création du personnage " + warrior.name);
+						System.out.println("Création du personnage " + warrior.getName());
 						warriors.add(warriors_number, warrior);
 						try {
-							DisplayImage image = new DisplayImage(warrior.image_url);
+							new DisplayImage(warrior.getImageUrl());
 						} catch (IOException e) {
 							System.out.println("Image loading failed");
 						}
 						++warriors_number;
 					} else if (char_selection.equals("D")) {
 						Wizard wizard = new Wizard(name_selection);
-						System.out.println("Création du personnage sorcier " + wizard.name);
+						System.out.println("Création du personnage sorcier " + wizard.getName());
 						wizards.add(wizards_number, wizard);
 						try {
-							DisplayImage image = new DisplayImage(wizard.image_url);
+							new DisplayImage(wizard.getImageUrl());
 						} catch (IOException e) {
 							System.out.println("Image loading failed");
 						}
@@ -138,5 +138,4 @@ public class Donjons_Dragons {
 			System.out.println(wizards.toString());
 		}
 	}
-
 }
