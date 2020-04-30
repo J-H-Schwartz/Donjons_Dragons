@@ -8,7 +8,7 @@ import java.util.Scanner;
  * 
  */
 
-public class CharacterCreation {
+abstract class CharacterCreation {
 	/** Input constant */
 	private static final String WAR = "W";
 

@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
  * 
  */
 
-public class CharactersListShow {
+abstract class CharactersListShow {
 
 	/**
 	 * Shows List from selected type (Wizards/Warriors).

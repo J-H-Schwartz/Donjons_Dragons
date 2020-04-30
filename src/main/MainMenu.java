@@ -8,7 +8,7 @@ import java.util.Scanner;
  * 
  */
 
-public class MainMenu {
+abstract class MainMenu {
 
 	/** Warriors ArrayList Object */
 	private static ArrayList<Warrior> warriors = new ArrayList<Warrior>();
@@ -27,7 +27,7 @@ public class MainMenu {
 
 		while (true) {
 			System.out.println(
-					"(R)echercher personnage\n(L)ister personnages\n(C)réer personnage\n(M)odifier personnage\n(Q)uitter");
+					"(R)echercher personnage\n(L)ister personnages\n(C)réer personnage\n(M)odifier personnage\n(S)upprimer personnage\n(Q)uitter");
 			String input = scanner.nextLine();
 			if (input.equals("C")) {
 				CharacterCreation.characterCreation(warriors, wizards, scanner);
@@ -37,6 +37,8 @@ public class MainMenu {
 				CharacterUpdate.characterUpdate(warriors, wizards, scanner);
 			} else if (input.equals("L")) {
 				CharactersListShow.characterShow(warriors, wizards, scanner);
+			} else if (input.equals("S")) {
+				CharactersDeletion.characterDeletion(warriors, wizards, scanner);
 			} else if (input.equals("Q")) {
 				System.out.println("Programme terminé.");
 				break;

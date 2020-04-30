@@ -7,7 +7,7 @@ import java.io.IOException;
  * 
  */
 
-public class WarriorCreation extends CharacterCreation {
+abstract class WarriorCreation extends CharacterCreation {
 
 	private static void charInfosPrint(Warrior warrior) {
 		System.out.println("Création du personnage " + warrior.getName() + " Life : " + warrior.getLife()
