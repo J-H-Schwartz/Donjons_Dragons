@@ -36,7 +36,7 @@ abstract class CharacterUpdate {
 
 	/** Input constant */
 	private static final String RETURN = "R";
-	
+
 	/** Warrior max life constant */
 	private static final int WARRIOR_MAX_LIFE = 10;
 
@@ -48,7 +48,7 @@ abstract class CharacterUpdate {
 
 	/** Warrior max Attack power constant */
 	private static final int WARRIOR_MIN_ATTACK_POWER = 5;
-	
+
 	/** Wizard max life constant */
 	private static final int WIZARD_MAX_LIFE = 6;
 
@@ -60,7 +60,7 @@ abstract class CharacterUpdate {
 
 	/** Wizard min Attack power constant */
 	private static final int WIZARD_MIN_ATTACK_POWER = 8;
-	
+
 	/**
 	 * Search by name through the characters lists and allow to update found
 	 * character informations.
@@ -127,8 +127,12 @@ abstract class CharacterUpdate {
 					boolean life_ok = false;
 					while (!life_ok) {
 						System.out.println("Entrez une nouvelle valeur de vie (Warrior: 5 à 10, Wizard 3 à 6):");
-						int_input = scanner.nextInt();
-
+						try {
+							int_input = scanner.nextInt();
+						} catch (Exception e) {
+							System.out.println("Mauvais format d'entrée. Recommencez.");
+							continue;
+						}
 						if (match_found == WIZARD_FOUND) {
 							if (Math.min(WIZARD_MAX_LIFE, Math.max(int_input, WIZARD_MIN_LIFE)) == int_input) {
 								wizards.get(result_index).setLife(int_input);
@@ -152,17 +156,23 @@ abstract class CharacterUpdate {
 					while (!AP_ok) {
 						System.out.println(
 								"Entrez une nouvelle valeur de puissance d'attaque (Warrior: 5 à 10, Wizard 8 à 15):");
-						int_input = scanner.nextInt();
-
+						try {
+							int_input = scanner.nextInt();
+						} catch (Exception e) {
+							System.out.println("Mauvais format d'entrée. Recommencez.");
+							continue;
+						}
 						if (match_found == WIZARD_FOUND) {
-							if (Math.min(WIZARD_MAX_ATTACK_POWER, Math.max(int_input, WIZARD_MIN_ATTACK_POWER)) == int_input) {
+							if (Math.min(WIZARD_MAX_ATTACK_POWER,
+									Math.max(int_input, WIZARD_MIN_ATTACK_POWER)) == int_input) {
 								wizards.get(result_index).setAttackPower(int_input);
 								AP_ok = true;
 							} else {
 								System.out.println("Paramètre invalide, recommencez.");
 							}
 						} else if (match_found == WARRIOR_FOUND) {
-							if (Math.min(WARRIOR_MAX_ATTACK_POWER, Math.max(int_input, WARRIOR_MIN_ATTACK_POWER)) == int_input) {
+							if (Math.min(WARRIOR_MAX_ATTACK_POWER,
+									Math.max(int_input, WARRIOR_MIN_ATTACK_POWER)) == int_input) {
 								warriors.get(result_index).setAttackPower(int_input);
 								AP_ok = true;
 							} else {
