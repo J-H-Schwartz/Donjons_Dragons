@@ -13,8 +13,7 @@ public class Potion {
 	private int health_increase;
 
 	public Potion() {
-		name = "Small Health Potion";
-		health_increase = 1;
+		this("Small health potion", 1);
 	}
 
 	public Potion(String name_arg, int health_arg) {

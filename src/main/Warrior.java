@@ -39,28 +39,18 @@ public class Warrior {
 	/** Warrior object Shield object */
 	public Shield shield;
 
+	@Override
 	public String toString() {
 		return "Personnage " + this.name + " Life : " + this.life + " Attack Power : " + this.attack_power
 				+ " Weapon : " + this.weapon.getName() + " Shield : " + this.shield.getName();
 	}
 
 	public Warrior() {
-		this.name = "Undefined";
-		this.life = 10;
-		this.attack_power = 5;
-		this.weapon = new Weapon();
-		this.shield = new Shield();
+		this("Undefined", MIN_LIFE, MIN_ATTACK_POWER);
 	}
 
 	public Warrior(String name_arg) {
-		if (name_arg.equals(EMPTY_STRING)) {
-			throw new IllegalArgumentException("Invalid Parameters.");
-		}
-		this.name = name_arg;
-		this.life = 10;
-		this.attack_power = 5;
-		this.weapon = new Weapon();
-		this.shield = new Shield();
+		this(name_arg, MIN_LIFE, MIN_ATTACK_POWER);
 	}
 
 	public Warrior(String name_arg, int life_arg, int attack_power_arg) {

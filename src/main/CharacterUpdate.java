@@ -1,6 +1,7 @@
 package main;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -8,7 +9,7 @@ import java.util.Scanner;
  * 
  */
 
-abstract class CharacterUpdate {
+public class CharacterUpdate {
 
 	/** Wizard search result constant */
 	private static final int WIZARD_FOUND = 1;
@@ -73,10 +74,10 @@ abstract class CharacterUpdate {
 	public static void characterUpdate(ArrayList<Warrior> warriors, ArrayList<Wizard> wizards, Scanner scanner) {
 
 		/** Search result, index of found object */
-		int result_index;
+		int result_index = 0;
 
 		/** Integer input */
-		int int_input;
+		int int_input = 0;
 
 		/** Search result array, contains [match_status, match_index] */
 		int[] result_match_index = new int[2];
@@ -113,88 +114,113 @@ abstract class CharacterUpdate {
 
 				} else if (input.equals(NAME)) {
 
-					System.out.println("Entrez un nouveau nom :");
-					input = scanner.nextLine();
-
-					if (match_found == WIZARD_FOUND) {
-						wizards.get(result_index).setName(input);
-
-					} else if (match_found == WARRIOR_FOUND) {
-						warriors.get(result_index).setName(input);
-					}
+					updateName(warriors, wizards, scanner, result_index, match_found);
 
 				} else if (input.equals(LIFE)) {
-					boolean life_ok = false;
-					while (!life_ok) {
-						System.out.println("Entrez une nouvelle valeur de vie (Warrior: 5 à 10, Wizard 3 à 6):");
-						try {
-							int_input = scanner.nextInt();
-						} catch (Exception e) {
-							System.out.println("Mauvais format d'entrée. Recommencez.");
-							continue;
-						}
-						if (match_found == WIZARD_FOUND) {
-							if (Math.min(WIZARD_MAX_LIFE, Math.max(int_input, WIZARD_MIN_LIFE)) == int_input) {
-								wizards.get(result_index).setLife(int_input);
-								life_ok = true;
-							} else {
-								System.out.println("Paramètre invalide, recommencez.");
-							}
-						} else if (match_found == WARRIOR_FOUND) {
-							if (Math.min(WARRIOR_MAX_LIFE, Math.max(int_input, WARRIOR_MIN_LIFE)) == int_input) {
-								warriors.get(result_index).setLife(int_input);
-								life_ok = true;
-							} else {
-								System.out.println("Paramètre invalide, recommencez.");
-							}
-						}
-						scanner.nextLine();
-					}
+					
+					updateLife(warriors, wizards, scanner, result_index, int_input, match_found);
 
 				} else if (input.equals(ATTACK_POWER)) {
-					boolean AP_ok = false;
-					while (!AP_ok) {
-						System.out.println(
-								"Entrez une nouvelle valeur de puissance d'attaque (Warrior: 5 à 10, Wizard 8 à 15):");
-						try {
-							int_input = scanner.nextInt();
-						} catch (Exception e) {
-							System.out.println("Mauvais format d'entrée. Recommencez.");
-							continue;
-						}
-						if (match_found == WIZARD_FOUND) {
-							if (Math.min(WIZARD_MAX_ATTACK_POWER,
-									Math.max(int_input, WIZARD_MIN_ATTACK_POWER)) == int_input) {
-								wizards.get(result_index).setAttackPower(int_input);
-								AP_ok = true;
-							} else {
-								System.out.println("Paramètre invalide, recommencez.");
-							}
-						} else if (match_found == WARRIOR_FOUND) {
-							if (Math.min(WARRIOR_MAX_ATTACK_POWER,
-									Math.max(int_input, WARRIOR_MIN_ATTACK_POWER)) == int_input) {
-								warriors.get(result_index).setAttackPower(int_input);
-								AP_ok = true;
-							} else {
-								System.out.println("Paramètre invalide, recommencez.");
-							}
-						}
-						scanner.nextLine();
-					}
+					
+					updateAttackPower(warriors, wizards, scanner, result_index, int_input, match_found);
 
 				} else if (input.equals(URL_IMAGE)) {
-					System.out.println("Entrez une nouvelle URL d'image :");
-					input = scanner.nextLine();
-
-					if (match_found == WIZARD_FOUND) {
-						wizards.get(result_index).setImageUrl(input);
-
-					} else if (match_found == WARRIOR_FOUND) {
-						warriors.get(result_index).setImageUrl(input);
-					}
+					
+					udpateImageURL(warriors, wizards, scanner, result_index, match_found);
 				}
 			}
 			System.out.println("Modification enregistrée !");
+		}
+	}
+
+	private static void udpateImageURL(ArrayList<Warrior> warriors, ArrayList<Wizard> wizards, Scanner scanner,
+			int result_index, int match_found) {
+		String input;
+		System.out.println("Entrez une nouvelle URL d'image :");
+		input = scanner.nextLine();
+
+		if (match_found == WIZARD_FOUND) {
+			wizards.get(result_index).setImageUrl(input);
+
+		} else if (match_found == WARRIOR_FOUND) {
+			warriors.get(result_index).setImageUrl(input);
+		}
+	}
+
+	private static void updateAttackPower(ArrayList<Warrior> warriors, ArrayList<Wizard> wizards, Scanner scanner,
+			int result_index, int int_input, int match_found) {
+		boolean AP_ok = false;
+		while (!AP_ok) {
+			System.out.println(
+					"Entrez une nouvelle valeur de puissance d'attaque (Warrior: 5 à 10, Wizard 8 à 15):");
+			try {
+				int_input = scanner.nextInt();
+			} catch (InputMismatchException e) {
+				System.out.println("Mauvais format d'entrée. Recommencez.");
+				continue;
+			}
+			if (match_found == WIZARD_FOUND) {
+				if (Math.min(WIZARD_MAX_ATTACK_POWER,
+						Math.max(int_input, WIZARD_MIN_ATTACK_POWER)) == int_input) {
+					wizards.get(result_index).setAttackPower(int_input);
+					AP_ok = true;
+				} else {
+					System.out.println("Paramètre invalide, recommencez.");
+				}
+			} else if (match_found == WARRIOR_FOUND) {
+				if (Math.min(WARRIOR_MAX_ATTACK_POWER,
+						Math.max(int_input, WARRIOR_MIN_ATTACK_POWER)) == int_input) {
+					warriors.get(result_index).setAttackPower(int_input);
+					AP_ok = true;
+				} else {
+					System.out.println("Paramètre invalide, recommencez.");
+				}
+			}
+			scanner.nextLine();
+		}
+	}
+
+	private static void updateLife(ArrayList<Warrior> warriors, ArrayList<Wizard> wizards, Scanner scanner,
+			int result_index, int int_input, int match_found) {
+		boolean life_ok = false;
+		while (!life_ok) {
+			System.out.println("Entrez une nouvelle valeur de vie (Warrior: 5 à 10, Wizard 3 à 6):");
+			try {
+				int_input = scanner.nextInt();
+			} catch (InputMismatchException e) {
+				System.out.println("Mauvais format d'entrée. Recommencez.");
+				continue;
+			}
+			if (match_found == WIZARD_FOUND) {
+				if (Math.min(WIZARD_MAX_LIFE, Math.max(int_input, WIZARD_MIN_LIFE)) == int_input) {
+					wizards.get(result_index).setLife(int_input);
+					life_ok = true;
+				} else {
+					System.out.println("Paramètre invalide, recommencez.");
+				}
+			} else if (match_found == WARRIOR_FOUND) {
+				if (Math.min(WARRIOR_MAX_LIFE, Math.max(int_input, WARRIOR_MIN_LIFE)) == int_input) {
+					warriors.get(result_index).setLife(int_input);
+					life_ok = true;
+				} else {
+					System.out.println("Paramètre invalide, recommencez.");
+				}
+			}
+			scanner.nextLine();
+		}
+	}
+
+	private static void updateName(ArrayList<Warrior> warriors, ArrayList<Wizard> wizards, Scanner scanner,
+			int result_index, int match_found) {
+		String input;
+		System.out.println("Entrez un nouveau nom :");
+		input = scanner.nextLine();
+
+		if (match_found == WIZARD_FOUND) {
+			wizards.get(result_index).setName(input);
+
+		} else if (match_found == WARRIOR_FOUND) {
+			warriors.get(result_index).setName(input);
 		}
 	}
 }

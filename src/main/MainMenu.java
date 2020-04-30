@@ -8,7 +8,7 @@ import java.util.Scanner;
  * 
  */
 
-abstract class MainMenu {
+public class MainMenu {
 
 	/** Warriors ArrayList Object */
 	private static ArrayList<Warrior> warriors = new ArrayList<Warrior>();

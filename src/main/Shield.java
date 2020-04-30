@@ -13,8 +13,7 @@ public class Shield {
 	private int block;
 
 	public Shield() {
-		name = "Wooden Shield";
-		block = 1;
+		this("Wooden Shield", 1);
 	}
 
 	public Shield(String name_arg, int damage_arg) {

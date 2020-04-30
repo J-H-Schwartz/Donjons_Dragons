@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
  * 
  */
 
-abstract class CharactersListShow {
+public class CharactersListShow {
 
 	/**
 	 * Shows List from selected type (Wizards/Warriors).
@@ -26,16 +26,12 @@ abstract class CharactersListShow {
 
 		if (input.equals("W")) {
 			System.out.println("Liste de Warriors :");
-//			for(int i=0; i < warriors.size(); i++){
-//	            System.out.println( warriors.get(i).getName());
-//	        }
 			System.out.println(warriors.stream().map(Object::toString).collect(Collectors.joining("\n")));
+		
 		} else if (input.equals("D")) {
 			System.out.println("Liste de Wizards :");
-//			for (int i = 0; i < wizards.size(); i++) {
-//				System.out.println(wizards.get(i).getName());
-//			}
 			System.out.println(wizards.stream().map(Object::toString).collect(Collectors.joining("\n")));
+		
 		} else {
 			System.out.println("Cette liste n'existe pas.");
 		}

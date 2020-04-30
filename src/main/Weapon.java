@@ -13,8 +13,7 @@ public class Weapon {
 	private int damage;
 
 	public Weapon() {
-		name = "Stick";
-		damage = 1;
+		this("Stick", 1);
 	}
 
 	public Weapon(String name_arg, int damage_arg) {

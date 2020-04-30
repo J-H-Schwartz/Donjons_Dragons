@@ -13,8 +13,7 @@ public class Spell {
 	private int damage;
 
 	public Spell() {
-		name = "Spark";
-		damage = 1;
+		this("Spark", 1);
 	}
 
 	public Spell(String name_arg, int damage_arg) {

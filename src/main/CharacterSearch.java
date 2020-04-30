@@ -9,7 +9,7 @@ import java.util.Scanner;
  * 
  */
 
-abstract class CharacterSearch {
+public class CharacterSearch {
 
 	/** Wizard search result constant */
 	private static final int WIZARD_FOUND = 1;

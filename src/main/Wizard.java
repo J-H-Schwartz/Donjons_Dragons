@@ -39,28 +39,18 @@ public class Wizard {
 	/** Wizard object Potion object */
 	public Potion potion;
 
+	@Override
 	public String toString() {
 		return "Personnage " + this.name + " Life : " + this.life + " Attack Power : " + this.attack_power + " "
 				+ this.spell.getName() + " Potion : " + this.potion.getName();
 	}
 
 	public Wizard() {
-		this.name = "Undefined";
-		this.life = 6;
-		this.attack_power = 8;
-		this.spell = new Spell();
-		this.potion = new Potion();
+		this("Undefined", MIN_LIFE, MIN_ATTACK_POWER);
 	}
 
 	public Wizard(String name_arg) {
-		if (name_arg.equals(EMPTY_STRING)) {
-			throw new IllegalArgumentException("Invalid Parameters.");
-		}
-		this.name = name_arg;
-		this.life = 6;
-		this.attack_power = 8;
-		this.spell = new Spell();
-		this.potion = new Potion();
+		this(name_arg, MIN_LIFE, MIN_ATTACK_POWER);
 	}
 
 	public Wizard(String name_arg, int life_arg, int attack_power_arg) {

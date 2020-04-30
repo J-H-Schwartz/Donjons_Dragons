@@ -7,8 +7,14 @@ import java.io.IOException;
  * 
  */
 
-abstract class WarriorCreation extends CharacterCreation {
+public class WarriorCreation extends CharacterCreation {
 
+	/**
+	 * Displays Warrior Object infos in console.
+	 * 
+	 * @param warrior
+	 * 
+	 */
 	private static void charInfosPrint(Warrior warrior) {
 		System.out.println("Création du personnage " + warrior.getName() + " Life : " + warrior.getLife()
 				+ " Attack power : " + warrior.getAttackPower());
@@ -43,13 +49,13 @@ abstract class WarriorCreation extends CharacterCreation {
 		// Tries to create new Warrior object with all parameters.
 		try {
 			warrior = new Warrior(name, life, attack_force);
-		} catch (Exception warrior_constructor_exception_1) {
+		} catch (IllegalArgumentException warrior_constructor_exception_1) {
 			System.out.println(
 					"Création échouée. Entrée de vie/force d'attaque invalide.\nEssai avec le paramètre nom uniquement.\nValeurs de vie et de force par défaut. Vous pourrez modifier votre personnage par la suite.");
 			// If fail, tries to create new Warrior object with name parameter.
 			try {
 				warrior = new Warrior(name);
-			} catch (Exception warrior_constructor_exception_2) {
+			} catch (IllegalArgumentException warrior_constructor_exception_2) {
 				System.out.println(
 						"Création échouée. Nom invalide.\n Création avec paramètres par défaut. Vous pourrez modifier votre personnage par la suite.");
 				// If fail, creates new Warrior object without parameter.

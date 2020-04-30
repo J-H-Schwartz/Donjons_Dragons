@@ -1,6 +1,7 @@
 package main;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -8,7 +9,7 @@ import java.util.Scanner;
  * 
  */
 
-abstract class CharacterCreation {
+public class CharacterCreation {
 	/** Input constant */
 	private static final String WAR = "W";
 
@@ -33,10 +34,6 @@ abstract class CharacterCreation {
 	 *
 	 */
 	public static void characterCreation(ArrayList<Warrior> warriors, ArrayList<Wizard> wizards, Scanner scanner) {
-		/** Life input var */
-		int life_selection;
-		/** Attack power input var */
-		int attack_power_selection;
 
 		// Gets Character Selection Input
 		System.out.println("Quel personnage souhaitez-vous créer ? (W)arrior or Wizar(D) ou (Q)uitter");
@@ -48,23 +45,8 @@ abstract class CharacterCreation {
 		System.out.println("Entrez un nom : ");
 		String name_selection = scanner.nextLine();
 
-		// Gets Life Selection Input
-		System.out.println("Entrez le maximum de points de vie (Warrior: 5-10, Wizard: 3-6) : ");
-		try {
-			life_selection = scanner.nextInt();
-		} catch (Exception inputMismatchException) {
-			System.out.println("Mauvais format d'entrée.");
-			life_selection = 0;
-		}
-
-		// Gets Attack Power Selection Input
-		System.out.println("Entrez les points d'attaque (Warrior: 5-10, Wizard: 8-15) : ");
-		try {
-			attack_power_selection = scanner.nextInt();
-		} catch (Exception inputMismatchException) {
-			System.out.println("Mauvais format d'entrée.");
-			attack_power_selection = 0;
-		}
+		int life_selection = askForLife(scanner);
+		int attack_power_selection = askForAttackPower(scanner);
 
 		// Creates selected char with input parameters.
 		if (char_selection.equals(WAR)) {
@@ -78,5 +60,27 @@ abstract class CharacterCreation {
 		}
 		// Empty scanner return.
 		scanner.nextLine();
+	}
+
+	private static int askForLife(Scanner scanner) {
+		// Gets Life Selection Input
+		System.out.println("Entrez le maximum de points de vie (Warrior: 5-10, Wizard: 3-6) : ");
+		try {
+			return scanner.nextInt();
+		} catch (InputMismatchException inputMismatchException) {
+			System.out.println("Mauvais format d'entrée.");
+			return 0;
+		}
+	}
+
+	private static int askForAttackPower(Scanner scanner) {
+		// Gets Attack Power Selection Input
+		System.out.println("Entrez les points d'attaque (Warrior: 5-10, Wizard: 8-15) : ");
+		try {
+			return scanner.nextInt();
+		} catch (InputMismatchException inputMismatchException) {
+			System.out.println("Mauvais format d'entrée.");
+			return 0;
+		}
 	}
 }

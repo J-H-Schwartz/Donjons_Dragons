@@ -2,11 +2,12 @@ package main;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+
 /**
-* Character Deletion Class.
-*
-*/
-abstract class CharactersDeletion {
+ * Character Deletion Class.
+ *
+ */
+public class CharactersDeletion {
 	/** Wizard search result constant */
 	private static final int WIZARD_FOUND = 1;
 
@@ -56,27 +57,40 @@ abstract class CharactersDeletion {
 				System.out.println("Aucun personnage avec ce nom n'a été trouvé.");
 				continue;
 			} else {
-				boolean confirmation_command_ok = false;
-				while (!confirmation_command_ok) {
-					System.out.println("Confirmer la suppression ? OUI ou NON");
-					input = scanner.nextLine();
-					if (input.equals("OUI")) {
-						if (match_found == WIZARD_FOUND) {
-							wizards.remove(result_index);
-						} else if (match_found == WARRIOR_FOUND) {
-							warriors.remove(result_index);
-						}
-						System.out.println("Personnage supprimé !");
-						confirmation_command_ok = true;
-					} else if (input.equals("NON")) {
-						System.out.println("Opération annulée.");
-						confirmation_command_ok = true;
-					} else {
-						System.out.println("Commande non reconnue.");
-					}
-				}
+				deleteCharacter(warriors, wizards, scanner, result_index, match_found);
 			}
+		}
+	}
 
+	private static void deleteCharacter(ArrayList<Warrior> warriors, ArrayList<Wizard> wizards, Scanner scanner,
+			int result_index, int match_found) {
+		String input;
+		boolean confirmation_command_ok = false;
+		while (!confirmation_command_ok) {
+
+			System.out.println("Confirmer la suppression ? OUI ou NON");
+			input = scanner.nextLine();
+
+			if (input.equals("OUI")) {
+
+				if (match_found == WIZARD_FOUND) {
+					wizards.remove(result_index);
+
+				} else if (match_found == WARRIOR_FOUND) {
+					warriors.remove(result_index);
+				}
+
+				System.out.println("Personnage supprimé !");
+				confirmation_command_ok = true;
+
+			} else if (input.equals("NON")) {
+
+				System.out.println("Opération annulée.");
+				confirmation_command_ok = true;
+
+			} else {
+				System.out.println("Commande non reconnue.");
+			}
 		}
 	}
 }
