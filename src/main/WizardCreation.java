@@ -3,11 +3,14 @@ package main;
 import java.io.IOException;
 
 /**
- * Wizards creation class, extends CharacterCreation.
+ * Wizards creation class.
  * 
  */
 
-public class WizardCreation extends CharacterCreation {
+public class WizardCreation {
+
+	private WizardCreation() {
+	}
 
 	/**
 	 * Displays Wizard Object infos in console.
@@ -16,8 +19,9 @@ public class WizardCreation extends CharacterCreation {
 	 * 
 	 */
 	private static void charInfosPrint(Wizard wizard) {
-		System.out.println("Création du personnage " + wizard.getName() + " Life : " + wizard.getLife()
-				+ " Attack power : " + wizard.getAttackPower());
+		System.out.println("Création du personnage " + wizard.getName() + " " + wizard.getClass_name() + " "
+				+ wizard.getRace_name() + "\nLife : " + wizard.getLife() + " Attack power : "
+				+ wizard.getAttackPower());
 	}
 
 	/**
@@ -44,11 +48,11 @@ public class WizardCreation extends CharacterCreation {
 	 * @param attack_force object attack force.
 	 * @return Wizard returns a new Wizard Object.
 	 */
-	public static Wizard wizardCreation(String name, int life, int attack_force) {
+	public static Wizard wizardCreation(String name, int life, int attack_force, String race) {
 		// Tries to create new Wizard object with all parameters.
 		Wizard wizard;
 		try {
-			wizard = new Wizard(name, life, attack_force);
+			wizard = new Wizard(name, life, attack_force, race);
 		} catch (IllegalArgumentException wizard_constructor_exception_1) {
 			System.out.println(
 					"Création échouée. Entrée de vie/force d'attaque invalide.\nEssai avec le paramètre nom uniquement.\nValeurs de vie et de force par défaut. Vous pourrez modifier votre personnage par la suite.");

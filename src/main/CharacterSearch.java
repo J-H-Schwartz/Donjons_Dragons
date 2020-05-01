@@ -1,6 +1,7 @@
 package main;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -12,13 +13,16 @@ import java.util.Scanner;
 public class CharacterSearch {
 
 	/** Wizard search result constant */
-	private static final int WIZARD_FOUND = 1;
+	static final int WIZARD_FOUND = 1;
 
 	/** Warrior search result constant */
-	private static final int WARRIOR_FOUND = 2;
+	static final int WARRIOR_FOUND = 2;
 
 	/** No search result constant */
-	private static final int NO_MATCH_FOUND = 0;
+	static final int NO_MATCH_FOUND = 0;
+
+	private CharacterSearch() {
+	}
 
 	/**
 	 * Displays Warrior Object Image.
@@ -77,9 +81,25 @@ public class CharacterSearch {
 		if (result_match_index[0] == WARRIOR_FOUND) {
 			System.out.println(warriors.get(result_match_index[1]).toString());
 			charImageDisplay(warriors.get(result_match_index[1]));
+			System.out.println("Son sort racial est : "
+					+ warriors.get(result_match_index[1]).getRacial_spell().getName() + " dont l'effet est :");
+			try {
+				warriors.get(result_match_index[1]).getRacial_spell().activateRacialSpell();
+			} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		} else if (result_match_index[0] == WIZARD_FOUND) {
 			System.out.println(wizards.get(result_match_index[1]).toString());
 			charImageDisplay(wizards.get(result_match_index[1]));
+			System.out.println("Son sort racial est : " + wizards.get(result_match_index[1]).getRacial_spell().getName()
+					+ " dont l'effet est :");
+			try {
+				wizards.get(result_match_index[1]).getRacial_spell().activateRacialSpell();
+			} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 

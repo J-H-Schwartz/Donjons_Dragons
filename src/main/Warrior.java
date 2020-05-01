@@ -4,8 +4,10 @@ package main;
  * Warrior object Data class.
  * 
  */
-public class Warrior {
+public class Warrior extends Race{
 
+	private String class_name;
+	
 	/** Warrior object name */
 	private String name;
 
@@ -31,7 +33,7 @@ public class Warrior {
 	private static final int MIN_ATTACK_POWER = 5;
 
 	/** Warrior object Image url */
-	private String image_url = "./medias/DwarfWarrior.png";
+	private String image_url;
 
 	/** Warrior object Weapon object */
 	public Weapon weapon;
@@ -41,30 +43,41 @@ public class Warrior {
 
 	@Override
 	public String toString() {
-		return "Personnage " + this.name + " Life : " + this.life + " Attack Power : " + this.attack_power
+		return "Personnage " + this.name + " " + this.getRace_name() + " " + this.class_name + "\nLife : " + this.life + " Attack Power : " + this.attack_power
 				+ " Weapon : " + this.weapon.getName() + " Shield : " + this.shield.getName();
 	}
 
 	public Warrior() {
-		this("Undefined", MIN_LIFE, MIN_ATTACK_POWER);
+		this("Undefined", MIN_LIFE, MIN_ATTACK_POWER, "D");
 	}
 
 	public Warrior(String name_arg) {
-		this(name_arg, MIN_LIFE, MIN_ATTACK_POWER);
+		this(name_arg, MIN_LIFE, MIN_ATTACK_POWER, "D");
 	}
 
-	public Warrior(String name_arg, int life_arg, int attack_power_arg) {
+	public Warrior(String name_arg, int life_arg, int attack_power_arg, String race_choice) {
+		super(race_choice);
 		if (name_arg.equals(EMPTY_STRING) || MIN_LIFE > life_arg || MAX_LIFE < life_arg
 				|| MIN_ATTACK_POWER > attack_power_arg || MAX_ATTACK_POWER < attack_power_arg) {
 			throw new IllegalArgumentException("Invalid Parameters.");
 		}
+		this.class_name = "Warrior";
 		this.name = name_arg;
 		this.life = life_arg;
 		this.attack_power = attack_power_arg;
 		this.weapon = new Weapon();
 		this.shield = new Shield();
+		if(race_choice.equals("D")) {
+			this.image_url = "./medias/DwarfWarrior.png";
+		} else if (race_choice.equals("E")) {
+			this.image_url = "./medias/ElveWarrior.png";
+		}
 	}
-
+	
+	public String getRaceName() {
+		return this.getRace_name();
+	}
+	
 	public void setName(String new_name) {
 		this.name = new_name;
 	}
@@ -95,5 +108,33 @@ public class Warrior {
 
 	public String getImageUrl() {
 		return this.image_url;
+	}
+
+	public String getClass_name() {
+		return class_name;
+	}
+
+	public void setClass_name(String class_name) {
+		this.class_name = class_name;
+	}
+	
+	@Override
+	public RacialSpell getRacial_spell() {
+		return racial_spell;
+	}
+	
+	@Override
+	public void setRacial_spell(RacialSpell racial_spell) {
+		this.racial_spell = racial_spell;
+	}
+
+	@Override
+	public String getRace_name() {
+		return race_name;
+	}
+
+	@Override
+	public void setRace_name(String race_name) {
+		this.race_name = race_name;
 	}
 }

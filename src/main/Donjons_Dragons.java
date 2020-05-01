@@ -5,6 +5,10 @@ package main;
  * 
  */
 public class Donjons_Dragons {
+
+	private Donjons_Dragons() {
+	}
+
 	/**
 	 * Calls program Main menu.
 	 * 

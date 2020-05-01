@@ -16,6 +16,9 @@ public class MainMenu {
 	/** Wizards ArrayList Object */
 	private static ArrayList<Wizard> wizards = new ArrayList<Wizard>();
 
+	private MainMenu() {
+	}
+
 	/**
 	 * Program main menu.
 	 * 

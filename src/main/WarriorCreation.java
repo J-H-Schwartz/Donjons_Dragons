@@ -3,11 +3,14 @@ package main;
 import java.io.IOException;
 
 /**
- * Warrior creation class, extends CharacterCreation.
+ * Warrior creation class.
  * 
  */
 
-public class WarriorCreation extends CharacterCreation {
+public class WarriorCreation {
+
+	private WarriorCreation() {
+	}
 
 	/**
 	 * Displays Warrior Object infos in console.
@@ -16,8 +19,9 @@ public class WarriorCreation extends CharacterCreation {
 	 * 
 	 */
 	private static void charInfosPrint(Warrior warrior) {
-		System.out.println("Création du personnage " + warrior.getName() + " Life : " + warrior.getLife()
-				+ " Attack power : " + warrior.getAttackPower());
+		System.out.println("Création du personnage " + warrior.getName() + " " + warrior.getClass_name() + " "
+				+ warrior.getRace_name() + "\nLife : " + warrior.getLife() + " Attack power : "
+				+ warrior.getAttackPower());
 	}
 
 	/**
@@ -44,11 +48,11 @@ public class WarriorCreation extends CharacterCreation {
 	 * @param attack_force object attack force.
 	 * @return Warrior returns a new Warrior Object.
 	 */
-	public static Warrior warriorCreation(String name, int life, int attack_force) {
+	public static Warrior warriorCreation(String name, int life, int attack_force, String race) {
 		Warrior warrior;
 		// Tries to create new Warrior object with all parameters.
 		try {
-			warrior = new Warrior(name, life, attack_force);
+			warrior = new Warrior(name, life, attack_force, race);
 		} catch (IllegalArgumentException warrior_constructor_exception_1) {
 			System.out.println(
 					"Création échouée. Entrée de vie/force d'attaque invalide.\nEssai avec le paramètre nom uniquement.\nValeurs de vie et de force par défaut. Vous pourrez modifier votre personnage par la suite.");

@@ -8,17 +8,21 @@ import java.util.Scanner;
  *
  */
 public class CharactersDeletion {
+
 	/** Wizard search result constant */
-	private static final int WIZARD_FOUND = 1;
+	static final int WIZARD_FOUND = 1;
 
 	/** Warrior search result constant */
-	private static final int WARRIOR_FOUND = 2;
+	static final int WARRIOR_FOUND = 2;
 
 	/** No search result constant */
-	private static final int NO_MATCH_FOUND = 0;
+	static final int NO_MATCH_FOUND = 0;
 
 	/** Input constant */
-	private static final String EMPTY_STRING = "";
+	static final String EMPTY_STRING = "";
+
+	private CharactersDeletion() {
+	}
 
 	/**
 	 * Search by name through the characters lists and deletes selected character.

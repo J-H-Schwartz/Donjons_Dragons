@@ -10,6 +10,7 @@ import java.util.Scanner;
  */
 
 public class CharacterCreation {
+
 	/** Input constant */
 	private static final String WAR = "W";
 
@@ -24,6 +25,9 @@ public class CharacterCreation {
 
 	/** Warrior object for creation */
 	private static Warrior warrior;
+
+	private CharacterCreation() {
+	}
 
 	/**
 	 * Get inputs in order to create new characters.
@@ -41,20 +45,28 @@ public class CharacterCreation {
 		if (char_selection.equals(QUIT)) {
 			return;
 		}
+
+		String race_selection = "";
+		while (!race_selection.equals("D") && !race_selection.equals("E")) {
+			System.out.println("Quelle race voulez-vous choisir pour votre personne ? (D)warf ou (E)lfe");
+			race_selection = scanner.nextLine();
+		}
+
 		// Gets Name Selection Input
 		System.out.println("Entrez un nom : ");
 		String name_selection = scanner.nextLine();
-
 		int life_selection = askForLife(scanner);
 		int attack_power_selection = askForAttackPower(scanner);
 
 		// Creates selected char with input parameters.
 		if (char_selection.equals(WAR)) {
-			warrior = WarriorCreation.warriorCreation(name_selection, life_selection, attack_power_selection);
+			warrior = WarriorCreation.warriorCreation(name_selection, life_selection, attack_power_selection,
+					race_selection);
 			// Add new Warrior to warriors ArrayList
 			warriors.add(warrior);
 		} else if (char_selection.equals(WIZ)) {
-			wizard = WizardCreation.wizardCreation(name_selection, life_selection, attack_power_selection);
+			wizard = WizardCreation.wizardCreation(name_selection, life_selection, attack_power_selection,
+					race_selection);
 			// Add new Wizard to wizards ArrayList
 			wizards.add(wizard);
 		}

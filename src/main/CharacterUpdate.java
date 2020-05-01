@@ -62,6 +62,9 @@ public class CharacterUpdate {
 	/** Wizard min Attack power constant */
 	private static final int WIZARD_MIN_ATTACK_POWER = 8;
 
+	private CharacterUpdate() {
+	}
+
 	/**
 	 * Search by name through the characters lists and allow to update found
 	 * character informations.
@@ -117,15 +120,15 @@ public class CharacterUpdate {
 					updateName(warriors, wizards, scanner, result_index, match_found);
 
 				} else if (input.equals(LIFE)) {
-					
+
 					updateLife(warriors, wizards, scanner, result_index, int_input, match_found);
 
 				} else if (input.equals(ATTACK_POWER)) {
-					
+
 					updateAttackPower(warriors, wizards, scanner, result_index, int_input, match_found);
 
 				} else if (input.equals(URL_IMAGE)) {
-					
+
 					udpateImageURL(warriors, wizards, scanner, result_index, match_found);
 				}
 			}
@@ -151,8 +154,7 @@ public class CharacterUpdate {
 			int result_index, int int_input, int match_found) {
 		boolean AP_ok = false;
 		while (!AP_ok) {
-			System.out.println(
-					"Entrez une nouvelle valeur de puissance d'attaque (Warrior: 5 à 10, Wizard 8 à 15):");
+			System.out.println("Entrez une nouvelle valeur de puissance d'attaque (Warrior: 5 à 10, Wizard 8 à 15):");
 			try {
 				int_input = scanner.nextInt();
 			} catch (InputMismatchException e) {
@@ -160,16 +162,14 @@ public class CharacterUpdate {
 				continue;
 			}
 			if (match_found == WIZARD_FOUND) {
-				if (Math.min(WIZARD_MAX_ATTACK_POWER,
-						Math.max(int_input, WIZARD_MIN_ATTACK_POWER)) == int_input) {
+				if (Math.min(WIZARD_MAX_ATTACK_POWER, Math.max(int_input, WIZARD_MIN_ATTACK_POWER)) == int_input) {
 					wizards.get(result_index).setAttackPower(int_input);
 					AP_ok = true;
 				} else {
 					System.out.println("Paramètre invalide, recommencez.");
 				}
 			} else if (match_found == WARRIOR_FOUND) {
-				if (Math.min(WARRIOR_MAX_ATTACK_POWER,
-						Math.max(int_input, WARRIOR_MIN_ATTACK_POWER)) == int_input) {
+				if (Math.min(WARRIOR_MAX_ATTACK_POWER, Math.max(int_input, WARRIOR_MIN_ATTACK_POWER)) == int_input) {
 					warriors.get(result_index).setAttackPower(int_input);
 					AP_ok = true;
 				} else {
