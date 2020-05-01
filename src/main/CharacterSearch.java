@@ -10,16 +10,7 @@ import java.util.Scanner;
  * 
  */
 
-public class CharacterSearch {
-
-	/** Wizard search result constant */
-	static final int WIZARD_FOUND = 1;
-
-	/** Warrior search result constant */
-	static final int WARRIOR_FOUND = 2;
-
-	/** No search result constant */
-	static final int NO_MATCH_FOUND = 0;
+public class CharacterSearch implements SearchConstInterface{
 
 	private CharacterSearch() {
 	}

@@ -7,19 +7,7 @@ import java.util.Scanner;
  * Character Deletion Class.
  *
  */
-public class CharactersDeletion {
-
-	/** Wizard search result constant */
-	static final int WIZARD_FOUND = 1;
-
-	/** Warrior search result constant */
-	static final int WARRIOR_FOUND = 2;
-
-	/** No search result constant */
-	static final int NO_MATCH_FOUND = 0;
-
-	/** Input constant */
-	static final String EMPTY_STRING = "";
+public class CharactersDeletion implements SearchConstInterface {
 
 	private CharactersDeletion() {
 	}
@@ -66,6 +54,15 @@ public class CharactersDeletion {
 		}
 	}
 
+	/**
+	 * Asks for Deletion confirmation and deletes characters.
+	 * 
+	 * @param warriors     ArrayList of warrior characters
+	 * @param wizards      ArrayList of wizards characters
+	 * @param scanner      Scanner object used to get Confirmation Input.
+	 * @param result_index index of found character in one of ArrayLists
+	 * @param match_found  which ArrayList contains the found character
+	 */
 	private static void deleteCharacter(ArrayList<Warrior> warriors, ArrayList<Wizard> wizards, Scanner scanner,
 			int result_index, int match_found) {
 		String input;

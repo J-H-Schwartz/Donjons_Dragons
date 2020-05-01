@@ -67,7 +67,7 @@ public class WarriorCreation {
 			}
 		}
 
-		// Display image pointed by URL
+		// Display image pointed by URL and infos.
 		charImageDisplay(warrior);
 		charInfosPrint(warrior);
 		return warrior;

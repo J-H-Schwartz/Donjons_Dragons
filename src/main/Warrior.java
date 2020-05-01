@@ -4,10 +4,10 @@ package main;
  * Warrior object Data class.
  * 
  */
-public class Warrior extends Race{
+public class Warrior extends Race implements SearchConstInterface, CharacterConstInterface {
 
 	private String class_name;
-	
+
 	/** Warrior object name */
 	private String name;
 
@@ -16,21 +16,6 @@ public class Warrior extends Race{
 
 	/** Warrior object Attack Power */
 	private int attack_power;
-
-	/** Empty string constant */
-	private static final String EMPTY_STRING = "";
-
-	/** Warrior max life constant */
-	private static final int MAX_LIFE = 10;
-
-	/** Warrior min life constant */
-	private static final int MIN_LIFE = 5;
-
-	/** Warrior max Attack power constant */
-	private static final int MAX_ATTACK_POWER = 10;
-
-	/** Warrior max Attack power constant */
-	private static final int MIN_ATTACK_POWER = 5;
 
 	/** Warrior object Image url */
 	private String image_url;
@@ -41,24 +26,18 @@ public class Warrior extends Race{
 	/** Warrior object Shield object */
 	public Shield shield;
 
-	@Override
-	public String toString() {
-		return "Personnage " + this.name + " " + this.getRace_name() + " " + this.class_name + "\nLife : " + this.life + " Attack Power : " + this.attack_power
-				+ " Weapon : " + this.weapon.getName() + " Shield : " + this.shield.getName();
-	}
-
 	public Warrior() {
-		this("Undefined", MIN_LIFE, MIN_ATTACK_POWER, "D");
+		this("Undefined", WARRIOR_MIN_LIFE, WARRIOR_MIN_ATTACK_POWER, "D");
 	}
 
 	public Warrior(String name_arg) {
-		this(name_arg, MIN_LIFE, MIN_ATTACK_POWER, "D");
+		this(name_arg, WARRIOR_MIN_LIFE, WARRIOR_MIN_ATTACK_POWER, "D");
 	}
 
 	public Warrior(String name_arg, int life_arg, int attack_power_arg, String race_choice) {
 		super(race_choice);
-		if (name_arg.equals(EMPTY_STRING) || MIN_LIFE > life_arg || MAX_LIFE < life_arg
-				|| MIN_ATTACK_POWER > attack_power_arg || MAX_ATTACK_POWER < attack_power_arg) {
+		if (name_arg.equals(EMPTY_STRING) || WARRIOR_MIN_LIFE > life_arg || WARRIOR_MAX_LIFE < life_arg
+				|| WARRIOR_MIN_ATTACK_POWER > attack_power_arg || WARRIOR_MAX_ATTACK_POWER < attack_power_arg) {
 			throw new IllegalArgumentException("Invalid Parameters.");
 		}
 		this.class_name = "Warrior";
@@ -67,17 +46,24 @@ public class Warrior extends Race{
 		this.attack_power = attack_power_arg;
 		this.weapon = new Weapon();
 		this.shield = new Shield();
-		if(race_choice.equals("D")) {
+		if (race_choice.equals("D")) {
 			this.image_url = "./medias/DwarfWarrior.png";
 		} else if (race_choice.equals("E")) {
 			this.image_url = "./medias/ElveWarrior.png";
 		}
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Personnage " + this.name + " " + this.getRace_name() + " " + this.class_name + "\nLife : " + this.life
+				+ " Attack Power : " + this.attack_power + " Weapon : " + this.weapon.getName() + " Shield : "
+				+ this.shield.getName();
+	}
+
 	public String getRaceName() {
 		return this.getRace_name();
 	}
-	
+
 	public void setName(String new_name) {
 		this.name = new_name;
 	}
@@ -117,12 +103,12 @@ public class Warrior extends Race{
 	public void setClass_name(String class_name) {
 		this.class_name = class_name;
 	}
-	
+
 	@Override
 	public RacialSpell getRacial_spell() {
 		return racial_spell;
 	}
-	
+
 	@Override
 	public void setRacial_spell(RacialSpell racial_spell) {
 		this.racial_spell = racial_spell;

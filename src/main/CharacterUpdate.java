@@ -9,58 +9,20 @@ import java.util.Scanner;
  * 
  */
 
-public class CharacterUpdate {
+public class CharacterUpdate implements SearchConstInterface, CharacterConstInterface {
 
-	/** Wizard search result constant */
-	private static final int WIZARD_FOUND = 1;
-
-	/** Warrior search result constant */
-	private static final int WARRIOR_FOUND = 2;
-
-	/** No search result constant */
-	private static final int NO_MATCH_FOUND = 0;
-
-	/** Input constant */
-	private static final String EMPTY_STRING = "";
-
-	/** Input constant */
-	private static final String URL_IMAGE = "U";
-
-	/** Input constant */
-	private static final String NAME = "N";
-
-	/** Input constant */
-	private static final String LIFE = "V";
-
-	/** Input constant */
-	private static final String ATTACK_POWER = "F";
-
-	/** Input constant */
-	private static final String RETURN = "R";
-
-	/** Warrior max life constant */
-	private static final int WARRIOR_MAX_LIFE = 10;
-
-	/** Warrior min life constant */
-	private static final int WARRIOR_MIN_LIFE = 5;
-
-	/** Warrior max Attack power constant */
-	private static final int WARRIOR_MAX_ATTACK_POWER = 10;
-
-	/** Warrior max Attack power constant */
-	private static final int WARRIOR_MIN_ATTACK_POWER = 5;
-
-	/** Wizard max life constant */
-	private static final int WIZARD_MAX_LIFE = 6;
-
-	/** Wizard min life constant */
-	private static final int WIZARD_MIN_LIFE = 3;
-
-	/** Wizard max Attack power constant */
-	private static final int WIZARD_MAX_ATTACK_POWER = 15;
-
-	/** Wizard min Attack power constant */
-	private static final int WIZARD_MIN_ATTACK_POWER = 8;
+	public interface CharacterUpdateInterface {
+		/** Input constant */
+		static final String URL_IMAGE = "U";
+		/** Input constant */
+		static final String NAME = "N";
+		/** Input constant */
+		static final String LIFE = "V";
+		/** Input constant */
+		static final String ATTACK_POWER = "F";
+		/** Input constant */
+		static final String RETURN = "R";
+	}
 
 	private CharacterUpdate() {
 	}
@@ -90,8 +52,7 @@ public class CharacterUpdate {
 
 		while (true) {
 
-			System.out.println("Quel personnage souhaitez-vous modifier ? Valider un champ vide pour quitter.");
-			String input = scanner.nextLine();
+			String input = askForCharacterName(scanner);
 
 			if (input.equals(EMPTY_STRING)) {
 				System.out.println("Retour au menu précédent.");
@@ -108,26 +69,24 @@ public class CharacterUpdate {
 
 			} else {
 
-				System.out.println(
-						"Quel champ souhaitez-vous modifier ?\n(N)om\n(V)ie\n(F)orce d'attaque\n(U)rl d'image\n(R)etour");
-				input = scanner.nextLine();
+				input = askForUpdateFieldSelection(scanner);
 
-				if (input.equals(RETURN)) {
+				if (input.equals(CharacterUpdateInterface.RETURN)) {
 					System.out.println("Retour.");
 
-				} else if (input.equals(NAME)) {
+				} else if (input.equals(CharacterUpdateInterface.NAME)) {
 
 					updateName(warriors, wizards, scanner, result_index, match_found);
 
-				} else if (input.equals(LIFE)) {
+				} else if (input.equals(CharacterUpdateInterface.LIFE)) {
 
 					updateLife(warriors, wizards, scanner, result_index, int_input, match_found);
 
-				} else if (input.equals(ATTACK_POWER)) {
+				} else if (input.equals(CharacterUpdateInterface.ATTACK_POWER)) {
 
 					updateAttackPower(warriors, wizards, scanner, result_index, int_input, match_found);
 
-				} else if (input.equals(URL_IMAGE)) {
+				} else if (input.equals(CharacterUpdateInterface.URL_IMAGE)) {
 
 					udpateImageURL(warriors, wizards, scanner, result_index, match_found);
 				}
@@ -136,6 +95,41 @@ public class CharacterUpdate {
 		}
 	}
 
+	/**
+	 * Asks for which field to update on the found character.
+	 * 
+	 * @param scanner Scanner object to get Input
+	 * @return String containing the selected field
+	 */
+	private static String askForUpdateFieldSelection(Scanner scanner) {
+		String input;
+		System.out.println(
+				"Quel champ souhaitez-vous modifier ?\n(N)om\n(V)ie\n(F)orce d'attaque\n(U)rl d'image\n(R)etour");
+		input = scanner.nextLine();
+		return input;
+	}
+
+	/**
+	 * Asks for which character to update.
+	 * 
+	 * @param scanner Scanner object to get Input
+	 * @return String containing the character name in order to research.
+	 */
+	private static String askForCharacterName(Scanner scanner) {
+		System.out.println("Quel personnage souhaitez-vous modifier ? Valider un champ vide pour quitter.");
+		String input = scanner.nextLine();
+		return input;
+	}
+
+	/**
+	 * Updates the selected character's ImageURL.
+	 * 
+	 * @param warriors     ArrayList object containing warriors objects
+	 * @param wizards      ArrayList object containing wizards objects
+	 * @param scanner      Scanner object to get Input of the new URL.
+	 * @param result_index index of the found character
+	 * @param match_found  ArrayList of the found character
+	 */
 	private static void udpateImageURL(ArrayList<Warrior> warriors, ArrayList<Wizard> wizards, Scanner scanner,
 			int result_index, int match_found) {
 		String input;
@@ -150,6 +144,15 @@ public class CharacterUpdate {
 		}
 	}
 
+	/**
+	 * Updates the selected character's attack power.
+	 * 
+	 * @param warriors     ArrayList object containing warriors objects
+	 * @param wizards      ArrayList object containing wizards objects
+	 * @param scanner      Scanner object to get Input of the new attack power.
+	 * @param result_index index of the found character
+	 * @param match_found  ArrayList of the found character
+	 */
 	private static void updateAttackPower(ArrayList<Warrior> warriors, ArrayList<Wizard> wizards, Scanner scanner,
 			int result_index, int int_input, int match_found) {
 		boolean AP_ok = false;
@@ -180,6 +183,15 @@ public class CharacterUpdate {
 		}
 	}
 
+	/**
+	 * Updates the selected character's life.
+	 * 
+	 * @param warriors     ArrayList object containing warriors objects
+	 * @param wizards      ArrayList object containing wizards objects
+	 * @param scanner      Scanner object to get Input of the new life.
+	 * @param result_index index of the found character
+	 * @param match_found  ArrayList of the found character
+	 */
 	private static void updateLife(ArrayList<Warrior> warriors, ArrayList<Wizard> wizards, Scanner scanner,
 			int result_index, int int_input, int match_found) {
 		boolean life_ok = false;
@@ -210,6 +222,15 @@ public class CharacterUpdate {
 		}
 	}
 
+	/**
+	 * Updates the selected character's name.
+	 * 
+	 * @param warriors     ArrayList object containing warriors objects
+	 * @param wizards      ArrayList object containing wizards objects
+	 * @param scanner      Scanner object to get Input of the new name.
+	 * @param result_index index of the found character
+	 * @param match_found  ArrayList of the found character
+	 */
 	private static void updateName(ArrayList<Warrior> warriors, ArrayList<Wizard> wizards, Scanner scanner,
 			int result_index, int match_found) {
 		String input;

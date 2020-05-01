@@ -67,7 +67,7 @@ public class WizardCreation {
 			}
 		}
 
-		// Display image pointed by URL
+		// Display image pointed by URL and infos.
 		charImageDisplay(wizard);
 		charInfosPrint(wizard);
 		return wizard;

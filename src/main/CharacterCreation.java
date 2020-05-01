@@ -40,22 +40,20 @@ public class CharacterCreation {
 	public static void characterCreation(ArrayList<Warrior> warriors, ArrayList<Wizard> wizards, Scanner scanner) {
 
 		// Gets Character Selection Input
-		System.out.println("Quel personnage souhaitez-vous créer ? (W)arrior or Wizar(D) ou (Q)uitter");
-		String char_selection = scanner.nextLine();
+		String char_selection = getCharClassSelection(scanner);
 		if (char_selection.equals(QUIT)) {
 			return;
 		}
-
-		String race_selection = "";
-		while (!race_selection.equals("D") && !race_selection.equals("E")) {
-			System.out.println("Quelle race voulez-vous choisir pour votre personne ? (D)warf ou (E)lfe");
-			race_selection = scanner.nextLine();
-		}
+		// Gets Race Selection Input
+		String race_selection = getRaceSelection(scanner);
 
 		// Gets Name Selection Input
-		System.out.println("Entrez un nom : ");
-		String name_selection = scanner.nextLine();
+		String name_selection = getNameSelection(scanner);
+
+		// Gets Life Selection Input
 		int life_selection = askForLife(scanner);
+
+		// Gets Attack_power Selection Input
 		int attack_power_selection = askForAttackPower(scanner);
 
 		// Creates selected char with input parameters.
@@ -74,6 +72,55 @@ public class CharacterCreation {
 		scanner.nextLine();
 	}
 
+	/**
+	 * Gets input name from user.
+	 * 
+	 * @param scanner Scanner objet for input.
+	 * 
+	 * @return String object used as name parameter for character creation.
+	 */
+	private static String getNameSelection(Scanner scanner) {
+		System.out.println("Entrez un nom : ");
+		String name_selection = scanner.nextLine();
+		return name_selection;
+	}
+
+	/**
+	 * Gets input Race from user.
+	 * 
+	 * @param scanner Scanner objet for input.
+	 * 
+	 * @return String object used as Race parameter for character creation.
+	 */
+	private static String getRaceSelection(Scanner scanner) {
+		String race_selection = "";
+		while (!race_selection.equals("D") && !race_selection.equals("E")) {
+			System.out.println("Quelle race voulez-vous choisir pour votre personne ? (D)warf ou (E)lfe");
+			race_selection = scanner.nextLine();
+		}
+		return race_selection;
+	}
+
+	/**
+	 * Gets input class from user.
+	 * 
+	 * @param scanner Scanner objet for input.
+	 * 
+	 * @return String object used as class parameter for character creation..
+	 */
+	private static String getCharClassSelection(Scanner scanner) {
+		System.out.println("Quel personnage souhaitez-vous créer ? (W)arrior or Wizar(D) ou (Q)uitter");
+		String char_selection = scanner.nextLine();
+		return char_selection;
+	}
+
+	/**
+	 * Gets input life from user.
+	 * 
+	 * @param scanner Scanner objet for input.
+	 * 
+	 * @return Int used as Life parameter for character creation..
+	 */
 	private static int askForLife(Scanner scanner) {
 		// Gets Life Selection Input
 		System.out.println("Entrez le maximum de points de vie (Warrior: 5-10, Wizard: 3-6) : ");
@@ -85,6 +132,13 @@ public class CharacterCreation {
 		}
 	}
 
+	/**
+	 * Gets input attack power from user.
+	 * 
+	 * @param scanner Scanner objet for input.
+	 * 
+	 * @return Int used as attack power parameter for character creation..
+	 */
 	private static int askForAttackPower(Scanner scanner) {
 		// Gets Attack Power Selection Input
 		System.out.println("Entrez les points d'attaque (Warrior: 5-10, Wizard: 8-15) : ");
