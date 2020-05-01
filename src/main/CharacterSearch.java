@@ -10,7 +10,7 @@ import java.util.Scanner;
  * 
  */
 
-public class CharacterSearch implements SearchConstInterface{
+public class CharacterSearch implements SearchConstInterface {
 
 	private CharacterSearch() {
 	}
@@ -91,6 +91,8 @@ public class CharacterSearch implements SearchConstInterface{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		} else {
+			System.out.println("Ce personnage n'existe pas.");
 		}
 	}
 

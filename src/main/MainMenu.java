@@ -44,8 +44,11 @@ public class MainMenu {
 		Scanner scanner = new Scanner(System.in);
 
 		while (true) {
-			String input = askForMenuSelection(scanner);
-
+			// String input = askForMenuSelection(scanner);
+			WindowedIHM.createAndShowGUI("M");
+			String input = WindowedIHM.sendMessage();
+			String[] split_input = input.split("-");
+			input = split_input[1];
 			if (input.equals(MainMenuConst.CREATION)) {
 				CharacterCreation.characterCreation(warriors, wizards, scanner);
 
@@ -78,10 +81,10 @@ public class MainMenu {
 	 * @param scanner Scanner object to get selection input.
 	 * @return String object containing selection input.
 	 */
-	private static String askForMenuSelection(Scanner scanner) {
-		System.out.println(
-				"(R)echercher personnage\n(L)ister personnages\n(C)réer personnage\n(M)odifier personnage\n(S)upprimer personnage\n(Q)uitter");
-		String input = scanner.nextLine();
-		return input;
-	}
+//	private static String askForMenuSelection(Scanner scanner) {
+//		System.out.println(
+//				"(R)echercher personnage\n(L)ister personnages\n(C)réer personnage\n(M)odifier personnage\n(S)upprimer personnage\n(Q)uitter");
+//		String input = scanner.nextLine();
+//		return input;
+//	}
 }

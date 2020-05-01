@@ -1,7 +1,5 @@
 package main;
 
-import java.io.IOException;
-
 /**
  * Wizards creation class.
  * 
@@ -22,22 +20,6 @@ public class WizardCreation {
 		System.out.println("Création du personnage " + wizard.getName() + " " + wizard.getClass_name() + " "
 				+ wizard.getRace_name() + "\nLife : " + wizard.getLife() + " Attack power : "
 				+ wizard.getAttackPower());
-	}
-
-	/**
-	 * Displays Wizard Object Image.
-	 *
-	 * @param wizard the object from which you want to show image.
-	 *
-	 */
-	private static void charImageDisplay(Wizard wizard) {
-		// Tries to display image pointed by URL.
-		try {
-			new DisplayImage(wizard.getImageUrl());
-		} catch (IOException DisplayException) {
-			// If fail, print image error.
-			System.out.println("Image loading failed");
-		}
 	}
 
 	/**
@@ -68,7 +50,6 @@ public class WizardCreation {
 		}
 
 		// Display image pointed by URL and infos.
-		charImageDisplay(wizard);
 		charInfosPrint(wizard);
 		return wizard;
 	}

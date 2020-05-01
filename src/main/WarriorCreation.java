@@ -1,7 +1,5 @@
 package main;
 
-import java.io.IOException;
-
 /**
  * Warrior creation class.
  * 
@@ -22,22 +20,6 @@ public class WarriorCreation {
 		System.out.println("Création du personnage " + warrior.getName() + " " + warrior.getClass_name() + " "
 				+ warrior.getRace_name() + "\nLife : " + warrior.getLife() + " Attack power : "
 				+ warrior.getAttackPower());
-	}
-
-	/**
-	 * Displays Warrior Object Image.
-	 *
-	 * @param warrior the object from which you want to show image.
-	 *
-	 */
-	private static void charImageDisplay(Warrior warrior) {
-		// Tries to display image pointed by URL.
-		try {
-			new DisplayImage(warrior.getImageUrl());
-		} catch (IOException DisplayException) {
-			// If fail, print image error.
-			System.out.println("Image loading failed");
-		}
 	}
 
 	/**
@@ -68,7 +50,6 @@ public class WarriorCreation {
 		}
 
 		// Display image pointed by URL and infos.
-		charImageDisplay(warrior);
 		charInfosPrint(warrior);
 		return warrior;
 	}

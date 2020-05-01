@@ -6,6 +6,7 @@ package main;
  */
 public class Warrior extends Race implements SearchConstInterface, CharacterConstInterface {
 
+	/** Warrior class name */
 	private String class_name;
 
 	/** Warrior object name */

@@ -39,13 +39,18 @@ public class CharacterCreation {
 	 */
 	public static void characterCreation(ArrayList<Warrior> warriors, ArrayList<Wizard> wizards, Scanner scanner) {
 
+		WindowedIHM.createAndShowGUI("C");
+		String input = WindowedIHM.sendMessage();
+		String[] input_parts = input.split("-");
+		String char_selection = input_parts[0];
+		String race_selection = input_parts[1];
 		// Gets Character Selection Input
-		String char_selection = getCharClassSelection(scanner);
+//		String char_selection = getCharClassSelection(scanner);
 		if (char_selection.equals(QUIT)) {
 			return;
 		}
-		// Gets Race Selection Input
-		String race_selection = getRaceSelection(scanner);
+//		// Gets Race Selection Input
+//		String race_selection = getRaceSelection(scanner);
 
 		// Gets Name Selection Input
 		String name_selection = getNameSelection(scanner);
@@ -92,14 +97,14 @@ public class CharacterCreation {
 	 * 
 	 * @return String object used as Race parameter for character creation.
 	 */
-	private static String getRaceSelection(Scanner scanner) {
-		String race_selection = "";
-		while (!race_selection.equals("D") && !race_selection.equals("E")) {
-			System.out.println("Quelle race voulez-vous choisir pour votre personne ? (D)warf ou (E)lfe");
-			race_selection = scanner.nextLine();
-		}
-		return race_selection;
-	}
+//	private static String getRaceSelection(Scanner scanner) {
+//		String race_selection = "";
+//		while (!race_selection.equals("D") && !race_selection.equals("E")) {
+//			System.out.println("Quelle race voulez-vous choisir pour votre personne ? (D)warf ou (E)lfe");
+//			race_selection = scanner.nextLine();
+//		}
+//		return race_selection;
+//	}
 
 	/**
 	 * Gets input class from user.
@@ -108,11 +113,11 @@ public class CharacterCreation {
 	 * 
 	 * @return String object used as class parameter for character creation..
 	 */
-	private static String getCharClassSelection(Scanner scanner) {
-		System.out.println("Quel personnage souhaitez-vous créer ? (W)arrior or Wizar(D) ou (Q)uitter");
-		String char_selection = scanner.nextLine();
-		return char_selection;
-	}
+//	private static String getCharClassSelection(Scanner scanner) {
+//		System.out.println("Quel personnage souhaitez-vous créer ? (W)arrior or Wizar(D) ou (Q)uitter");
+//		String char_selection = scanner.nextLine();
+//		return char_selection;
+//	}
 
 	/**
 	 * Gets input life from user.

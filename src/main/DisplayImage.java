@@ -26,7 +26,7 @@ public class DisplayImage {
 		ImageIcon icon = new ImageIcon(img);
 		JFrame frame = new JFrame();
 		frame.setLayout(new FlowLayout());
-		frame.setSize(300, 400);
+		frame.setSize(145, 250);
 		JLabel lbl = new JLabel();
 		lbl.setIcon(icon);
 		frame.add(lbl);
