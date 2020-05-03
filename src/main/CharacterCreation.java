@@ -53,14 +53,23 @@ public class CharacterCreation {
 //		String race_selection = getRaceSelection(scanner);
 
 		// Gets Name Selection Input
-		String name_selection = getNameSelection(scanner);
+//		String name_selection = getNameSelection(scanner);
+//
+//		// Gets Life Selection Input
+//		int life_selection = askForLife(scanner);
+//
+//		// Gets Attack_power Selection Input
+//		int attack_power_selection = askForAttackPower(scanner);
 
-		// Gets Life Selection Input
-		int life_selection = askForLife(scanner);
-
-		// Gets Attack_power Selection Input
-		int attack_power_selection = askForAttackPower(scanner);
-
+		WindowedIHM.createAndShowGUI("C2");
+		String input2 = WindowedIHM.sendMessage();
+		String[] input_parts2 = input2.split("-");
+		String name_selection = input_parts2[0];
+		int life_selection = Integer.parseInt(input_parts2[1]);
+		int attack_power_selection = Integer.parseInt(input_parts2[2]);
+		if (name_selection.equals(QUIT)) {
+			return;
+		}
 		// Creates selected char with input parameters.
 		if (char_selection.equals(WAR)) {
 			warrior = WarriorCreation.warriorCreation(name_selection, life_selection, attack_power_selection,
@@ -74,7 +83,7 @@ public class CharacterCreation {
 			wizards.add(wizard);
 		}
 		// Empty scanner return.
-		scanner.nextLine();
+	//	scanner.nextLine();
 	}
 
 	/**
@@ -84,11 +93,11 @@ public class CharacterCreation {
 	 * 
 	 * @return String object used as name parameter for character creation.
 	 */
-	private static String getNameSelection(Scanner scanner) {
-		System.out.println("Entrez un nom : ");
-		String name_selection = scanner.nextLine();
-		return name_selection;
-	}
+//	private static String getNameSelection(Scanner scanner) {
+//		System.out.println("Entrez un nom : ");
+//		String name_selection = scanner.nextLine();
+//		return name_selection;
+//	}
 
 	/**
 	 * Gets input Race from user.
@@ -126,16 +135,16 @@ public class CharacterCreation {
 	 * 
 	 * @return Int used as Life parameter for character creation..
 	 */
-	private static int askForLife(Scanner scanner) {
-		// Gets Life Selection Input
-		System.out.println("Entrez le maximum de points de vie (Warrior: 5-10, Wizard: 3-6) : ");
-		try {
-			return scanner.nextInt();
-		} catch (InputMismatchException inputMismatchException) {
-			System.out.println("Mauvais format d'entrée.");
-			return 0;
-		}
-	}
+//	private static int askForLife(Scanner scanner) {
+//		// Gets Life Selection Input
+//		System.out.println("Entrez le maximum de points de vie (Warrior: 5-10, Wizard: 3-6) : ");
+//		try {
+//			return scanner.nextInt();
+//		} catch (InputMismatchException inputMismatchException) {
+//			System.out.println("Mauvais format d'entrée.");
+//			return 0;
+//		}
+//	}
 
 	/**
 	 * Gets input attack power from user.
@@ -144,14 +153,14 @@ public class CharacterCreation {
 	 * 
 	 * @return Int used as attack power parameter for character creation..
 	 */
-	private static int askForAttackPower(Scanner scanner) {
-		// Gets Attack Power Selection Input
-		System.out.println("Entrez les points d'attaque (Warrior: 5-10, Wizard: 8-15) : ");
-		try {
-			return scanner.nextInt();
-		} catch (InputMismatchException inputMismatchException) {
-			System.out.println("Mauvais format d'entrée.");
-			return 0;
-		}
-	}
+//	private static int askForAttackPower(Scanner scanner) {
+//		// Gets Attack Power Selection Input
+//		System.out.println("Entrez les points d'attaque (Warrior: 5-10, Wizard: 8-15) : ");
+//		try {
+//			return scanner.nextInt();
+//		} catch (InputMismatchException inputMismatchException) {
+//			System.out.println("Mauvais format d'entrée.");
+//			return 0;
+//		}
+//	}
 }

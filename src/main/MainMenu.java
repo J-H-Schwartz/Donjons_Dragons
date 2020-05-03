@@ -28,8 +28,16 @@ public class MainMenu {
 	/** Warriors ArrayList Object */
 	private static ArrayList<Warrior> warriors = new ArrayList<Warrior>();
 
+	public static ArrayList<Warrior> getWarriors() {
+		return warriors;
+	}
+
 	/** Wizards ArrayList Object */
 	private static ArrayList<Wizard> wizards = new ArrayList<Wizard>();
+
+	public static ArrayList<Wizard> getWizards() {
+		return wizards;
+	}
 
 	private MainMenu() {
 	}
@@ -59,7 +67,11 @@ public class MainMenu {
 				CharacterUpdate.characterUpdate(warriors, wizards, scanner);
 
 			} else if (input.equals(MainMenuConst.LIST)) {
-				CharactersListShow.characterShow(warriors, wizards, scanner);
+				// CharactersListShow.characterShow(warriors, wizards, scanner);
+				WindowedIHM.createAndShowGUI("L");
+				input = WindowedIHM.sendMessage();
+				split_input = input.split("-");
+				input = split_input[1];
 
 			} else if (input.equals(MainMenuConst.DELETE)) {
 				CharactersDeletion.characterDeletion(warriors, wizards, scanner);
