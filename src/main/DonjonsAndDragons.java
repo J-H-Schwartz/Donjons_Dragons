@@ -4,9 +4,9 @@ package main;
  * Main game class, program Entry point.
  * 
  */
-public class Donjons_Dragons {
+public class DonjonsAndDragons {
 
-	private Donjons_Dragons() {
+	private DonjonsAndDragons() {
 	}
 
 	/**

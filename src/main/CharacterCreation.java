@@ -7,8 +7,7 @@ import java.util.Scanner;
  * Character Creation class.
  * 
  */
-
-public class CharacterCreation {
+public class CharacterCreation implements CharacterCreationInterface {
 
 	/** Input constant */
 	private static final String WAR = "W";
@@ -28,20 +27,20 @@ public class CharacterCreation {
 	/**
 	 * Get inputs in order to create new characters.
 	 *
-	 * @param warriors the ArrayList containing Warriors Objects.
-	 * @param wizards  the ArrayList containing Wizards Objects.
-	 * @param scanner  a Scanner Object used to get inputs.
+	 * @param charactersList the ArrayList containing Character Objects.
+	 * @param scanner        a Scanner Object used to get inputs.
 	 *
 	 */
-	public void characterCreation(ArrayList<Warrior> warriors, ArrayList<Wizard> wizards, Scanner scanner) {
+	@Override
+	public void characterCreation(ArrayList<Character> charactersList, Scanner scanner) {
 		WindowedIHM.createAndShowGUI("C");
 		String input = WindowedIHM.sendMessage();
-		String[] input_parts = input.split("-");
-		String char_selection = input_parts[0];
-		String race_selection = input_parts[1];
+		String[] splittedInput = input.split("-");
+		String charSelection = splittedInput[0];
+		String raceSelection = splittedInput[1];
 		// Gets Character Selection Input
 //		String char_selection = getCharClassSelection(scanner);
-		if (char_selection.equals(QUIT)) {
+		if (charSelection.equals(QUIT)) {
 			return;
 		}
 //		// Gets Race Selection Input
@@ -58,29 +57,28 @@ public class CharacterCreation {
 
 		WindowedIHM.createAndShowGUI("C2");
 		String input2 = WindowedIHM.sendMessage();
-		String[] input_parts2 = input2.split("-");
-		String name_selection = input_parts2[0];
-		int life_selection = Integer.parseInt(input_parts2[1]);
-		int attack_power_selection = Integer.parseInt(input_parts2[2]);
-		if (name_selection.equals(QUIT)) {
+		String[] splittedInput2 = input2.split("-");
+		String nameSelection = splittedInput2[0];
+		int lifeSelection = Integer.parseInt(splittedInput2[1]);
+		int attackPowerSelection = Integer.parseInt(splittedInput2[2]);
+		if (nameSelection.equals(QUIT)) {
 			return;
 		}
 		// Creates selected char with input parameters.
-		if (char_selection.equals(WAR)) {
-			WarriorCreation warrior_creation = new WarriorCreation();
-			warrior = warrior_creation.warriorCreation(name_selection, life_selection, attack_power_selection,
-					race_selection);
-			// Add new Warrior to warriors ArrayList
-			warriors.add(warrior);
-		} else if (char_selection.equals(WIZ)) {
-			WizardCreation wizard_creation = new WizardCreation();
-			wizard = wizard_creation.wizardCreation(name_selection, life_selection, attack_power_selection,
-					race_selection);
-			// Add new Wizard to wizards ArrayList
-			wizards.add(wizard);
+		if (charSelection.equals(WAR)) {
+			WarriorCreationInterface warrior_creation = new WarriorCreation();
+			warrior = warrior_creation.warriorCreation(nameSelection, lifeSelection, attackPowerSelection,
+					raceSelection);
+			// Add new Warrior to characters ArrayList
+			charactersList.add(warrior);
+		} else if (charSelection.equals(WIZ)) {
+			WizardCreationInterface wizard_creation = new WizardCreation();
+			wizard = wizard_creation.wizardCreation(nameSelection, lifeSelection, attackPowerSelection, raceSelection);
+			// Add new Wizard to characters ArrayList
+			charactersList.add(wizard);
 		}
 		// Empty scanner return.
-	//	scanner.nextLine();
+		// scanner.nextLine();
 	}
 
 	/**

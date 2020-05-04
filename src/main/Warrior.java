@@ -4,45 +4,57 @@ package main;
  * Warrior object Data class.
  * 
  */
-public class Warrior extends Race implements SearchConstInterface, CharacterConstInterface {
+public class Warrior extends Character implements WarriorClassInterface {
+
+	/** Warrior max life constant */
+	static final int WARRIOR_MAX_LIFE = 10;
+
+	/** Warrior min life constant */
+	static final int WARRIOR_MIN_LIFE = 5;
+
+	/** Warrior max Attack power constant */
+	static final int WARRIOR_MAX_ATTACK_POWER = 10;
+
+	/** Warrior max Attack power constant */
+	static final int WARRIOR_MIN_ATTACK_POWER = 5;
 
 	/** Warrior object Weapon object */
-	public Weapon weapon;
+	public WeaponClassInterface weapon;
 
 	/** Warrior object Shield object */
-	public Shield shield;
+	public ShieldClassInterface shield;
 
 	public Warrior() {
 		this("Undefined", WARRIOR_MIN_LIFE, WARRIOR_MIN_ATTACK_POWER, "D");
 	}
 
-	public Warrior(String name_arg) {
-		this(name_arg, WARRIOR_MIN_LIFE, WARRIOR_MIN_ATTACK_POWER, "D");
+	public Warrior(String nameArg) {
+		this(nameArg, WARRIOR_MIN_LIFE, WARRIOR_MIN_ATTACK_POWER, "D");
 	}
 
-	public Warrior(String name_arg, int life_arg, int attack_power_arg, String race_choice) {
-		super(race_choice);
-		if (name_arg.equals(EMPTY_STRING) || WARRIOR_MIN_LIFE > life_arg || WARRIOR_MAX_LIFE < life_arg
-				|| WARRIOR_MIN_ATTACK_POWER > attack_power_arg || WARRIOR_MAX_ATTACK_POWER < attack_power_arg) {
+	public Warrior(String nameArg, int lifeArg, int attackPowerArg, String raceChoice) {
+		super(raceChoice);
+		if (nameArg.isEmpty() || WARRIOR_MIN_LIFE > lifeArg || WARRIOR_MAX_LIFE < lifeArg
+				|| WARRIOR_MIN_ATTACK_POWER > attackPowerArg || WARRIOR_MAX_ATTACK_POWER < attackPowerArg) {
 			throw new IllegalArgumentException("Invalid Parameters.");
 		}
-		this.class_name = "Warrior";
-		this.name = name_arg;
-		this.life = life_arg;
-		this.attack_power = attack_power_arg;
+		this.className = "Warrior";
+		this.name = nameArg;
+		this.life = lifeArg;
+		this.attackPower = attackPowerArg;
 		this.weapon = new Weapon();
 		this.shield = new Shield();
-		if (race_choice.equals("D")) {
-			this.image_url = "./medias/DwarfWarrior.png";
-		} else if (race_choice.equals("E")) {
-			this.image_url = "./medias/ElveWarrior.png";
+		if (raceChoice.equals("D")) {
+			this.imageUrl = "./medias/DwarfWarrior.png";
+		} else if (raceChoice.equals("E")) {
+			this.imageUrl = "./medias/ElveWarrior.png";
 		}
 	}
 
 	@Override
 	public String toString() {
-		return "Personnage " + this.name + " " + this.race_name + " " + this.class_name + "\nLife : " + this.life
-				+ " Attack Power : " + this.attack_power + " Weapon : " + this.weapon.getName() + " Shield : "
+		return "Personnage " + this.name + " " + this.raceName + " " + this.className + "\nLife : " + this.life
+				+ " Attack Power : " + this.attackPower + " Weapon : " + this.weapon.getName() + " Shield : "
 				+ this.shield.getName();
 	}
 }

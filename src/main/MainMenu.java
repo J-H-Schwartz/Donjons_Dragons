@@ -10,33 +10,22 @@ import java.util.Scanner;
 
 public class MainMenu {
 
-	private interface MainMenuConst {
-		/** Input constant */
-		static final String CREATION = "C";
-		/** Input constant */
-		static final String RESEARCH = "R";
-		/** Input constant */
-		static final String UPDATE = "M";
-		/** Input constant */
-		static final String LIST = "L";
-		/** Input constant */
-		static final String DELETE = "S";
-		/** Input constant */
-		static final String QUIT = "Q";
-	}
-
-	/** Warriors ArrayList Object */
-	private static ArrayList<Warrior> warriors = new ArrayList<Warrior>();
-
-	public static ArrayList<Warrior> getWarriors() {
-		return warriors;
-	}
-
-	/** Wizards ArrayList Object */
-	private static ArrayList<Wizard> wizards = new ArrayList<Wizard>();
-
-	public static ArrayList<Wizard> getWizards() {
-		return wizards;
+	static final String CREATION = "C";
+	/** Input constant */
+	static final String RESEARCH = "R";
+	/** Input constant */
+	static final String UPDATE = "M";
+	/** Input constant */
+	static final String LIST = "L";
+	/** Input constant */
+	static final String DELETE = "S";
+	/** Input constant */
+	static final String QUIT = "Q";
+	
+	private static ArrayList<Character> charactersList = new ArrayList<Character>();
+	
+	public static ArrayList<Character> getWCharactersList() {
+		return charactersList;
 	}
 
 	private MainMenu() {
@@ -54,33 +43,32 @@ public class MainMenu {
 		while (true) {
 			// String input = askForMenuSelection(scanner);
 			WindowedIHM.createAndShowGUI("M");
-			String input = WindowedIHM.sendMessage();
-			String[] split_input = input.split("-");
-			input = split_input[1];
-			if (input.equals(MainMenuConst.CREATION)) {
-				CharacterCreation charCreate = new CharacterCreation();
-				charCreate.characterCreation(warriors, wizards, scanner);
+			String menuSelection = WindowedIHM.sendMessage();
+			String[] splittedInput = menuSelection.split("-");
+			menuSelection = splittedInput[1];
+			if (menuSelection.equals(CREATION)) {
+				CharacterCreationInterface charCreate = new CharacterCreation();
+				charCreate.characterCreation(charactersList, scanner);
 
-			} else if (input.equals(MainMenuConst.RESEARCH)) {
-				CharacterSearch char_search = new CharacterSearch();
-				char_search.characterSearch(wizards, warriors, input);
+			} else if (menuSelection.equals(RESEARCH)) {
+				CharacterSearchInterface charSearch = new CharacterSearch();
+				charSearch.search(charactersList, scanner);
 
-			} else if (input.equals(MainMenuConst.UPDATE)) {
-				CharacterUpdate char_update = new CharacterUpdate();
-				char_update.characterUpdate(warriors, wizards, scanner);
+			} else if (menuSelection.equals(UPDATE)) {
+				CharacterUpdateInterface charUpdate = new CharacterUpdate();
+				charUpdate.characterUpdate(charactersList, scanner);
 
-			} else if (input.equals(MainMenuConst.LIST)) {
-				// CharactersListShow.characterShow(warriors, wizards, scanner);
+			} else if (menuSelection.equals(LIST)) {
+//				CharactersListShow charShow = new CharactersListShow();
+//				charShow.characterShow(charactersList, scanner);
 				WindowedIHM.createAndShowGUI("L");
-				input = WindowedIHM.sendMessage();
-				split_input = input.split("-");
-				input = split_input[1];
+				WindowedIHM.sendMessage();
 
-			} else if (input.equals(MainMenuConst.DELETE)) {
-				CharactersDeletion char_del = new CharactersDeletion();
-				char_del.characterDeletion(warriors, wizards, scanner);
+			} else if (menuSelection.equals(DELETE)) {
+				CharactersDeletionInterface charDel = new CharactersDeletion();
+				charDel.characterDeletion(charactersList, scanner);
 
-			} else if (input.equals(MainMenuConst.QUIT)) {
+			} else if (menuSelection.equals(QUIT)) {
 				System.out.println("Programme terminé.");
 				break;
 

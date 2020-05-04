@@ -4,7 +4,7 @@ package main;
  * Shield object Data class.
  * 
  */
-public class Shield {
+public class Shield implements ShieldClassInterface {
 
 	/** Shield object name */
 	private String name;
@@ -16,23 +16,27 @@ public class Shield {
 		this("Wooden Shield", 1);
 	}
 
-	public Shield(String name_arg, int damage_arg) {
-		name = name_arg;
-		block = damage_arg;
+	public Shield(String nameArg, int damageArg) {
+		name = nameArg;
+		block = damageArg;
 	}
 
-	public void setName(String new_name) {
-		this.name = new_name;
+	@Override
+	public void setName(String newName) {
+		this.name = newName;
 	}
 
+	@Override
 	public String getName() {
 		return this.name;
 	}
 
-	public void setBlock(int new_block) {
-		this.block = new_block;
+	@Override
+	public void setBlock(int newBlock) {
+		this.block = newBlock;
 	}
 
+	@Override
 	public int getBlock() {
 		return this.block;
 	}

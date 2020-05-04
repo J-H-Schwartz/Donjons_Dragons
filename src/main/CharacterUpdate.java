@@ -9,60 +9,49 @@ import java.util.Scanner;
  * 
  */
 
-public class CharacterUpdate implements SearchConstInterface, CharacterConstInterface {
+public class CharacterUpdate implements CharacterUpdateInterface {
 
-	public interface CharacterUpdateInterface {
-		/** Input constant */
-		static final String URL_IMAGE = "U";
-		/** Input constant */
-		static final String NAME = "N";
-		/** Input constant */
-		static final String LIFE = "V";
-		/** Input constant */
-		static final String ATTACK_POWER = "F";
-		/** Input constant */
-		static final String RETURN = "R";
-	}
-
+	/** Input constant */
+	static final String URL_IMAGE = "U";
+	/** Input constant */
+	static final String NAME = "N";
+	/** Input constant */
+	static final String LIFE = "V";
+	/** Input constant */
+	static final String ATTACK_POWER = "F";
+	/** Input constant */
+	static final String RETURN = "R";
 
 	/**
 	 * Search by name through the characters lists and allow to update found
 	 * character informations.
 	 *
-	 * @param warriors the ArrayList containing Warriors Objects.
-	 * @param wizards  the ArrayList containing Wizards Objects.
-	 * @param scanner  a Scanner Object used to get inputs.
+	 * @param charactersList the ArrayList containing Character Objects.
+	 * @param scanner        a Scanner Object used to get inputs.
 	 *
 	 */
-	public void characterUpdate(ArrayList<Warrior> warriors, ArrayList<Wizard> wizards, Scanner scanner) {
+	@Override
+	public void characterUpdate(ArrayList<Character> charactersList, Scanner scanner) {
 
 		/** Search result, index of found object */
-		int result_index = 0;
+		int resultIndex = 0;
 
 		/** Integer input */
-		int int_input = 0;
-
-		/** Search result array, contains [match_status, match_index] */
-		int[] result_match_index = new int[2];
-
-		/** Search result, match type (Warrior/Wizard/None) */
-		int match_found = NO_MATCH_FOUND;
+		int intInput = 0;
 
 		while (true) {
 
 			String input = askForCharacterName(scanner);
 
-			if (input.equals(EMPTY_STRING)) {
+			if (input.isEmpty()) {
 				System.out.println("Retour au menu précédent.");
 				break;
 			}
 
-			CharacterSearch char_search = new CharacterSearch();
-			result_match_index = char_search.characterSearch(wizards, warriors, input);
-			match_found = result_match_index[0];
-			result_index = result_match_index[1];
+			CharacterSearchInterface charSearch = new CharacterSearch();
+			resultIndex = charSearch.characterSearch(charactersList, input);
 
-			if (match_found == NO_MATCH_FOUND) {
+			if (resultIndex == -1) {
 				System.out.println("Aucun personnage avec ce nom n'a été trouvé.");
 				continue;
 
@@ -70,24 +59,24 @@ public class CharacterUpdate implements SearchConstInterface, CharacterConstInte
 
 				input = askForUpdateFieldSelection(scanner);
 
-				if (input.equals(CharacterUpdateInterface.RETURN)) {
+				if (input.equals(RETURN)) {
 					System.out.println("Retour.");
 
-				} else if (input.equals(CharacterUpdateInterface.NAME)) {
+				} else if (input.equals(NAME)) {
 
-					updateName(warriors, wizards, scanner, result_index, match_found);
+					updateName(charactersList, scanner, resultIndex);
 
-				} else if (input.equals(CharacterUpdateInterface.LIFE)) {
+				} else if (input.equals(LIFE)) {
 
-					updateLife(warriors, wizards, scanner, result_index, int_input, match_found);
+					updateLife(charactersList, scanner, resultIndex, intInput);
 
-				} else if (input.equals(CharacterUpdateInterface.ATTACK_POWER)) {
+				} else if (input.equals(ATTACK_POWER)) {
 
-					updateAttackPower(warriors, wizards, scanner, result_index, int_input, match_found);
+					updateAttackPower(charactersList, scanner, resultIndex, intInput);
 
-				} else if (input.equals(CharacterUpdateInterface.URL_IMAGE)) {
+				} else if (input.equals(URL_IMAGE)) {
 
-					udpateImageURL(warriors, wizards, scanner, result_index, match_found);
+					udpateImageURL(charactersList, scanner, resultIndex);
 				}
 			}
 			System.out.println("Modification enregistrée !");
@@ -123,57 +112,61 @@ public class CharacterUpdate implements SearchConstInterface, CharacterConstInte
 	/**
 	 * Updates the selected character's ImageURL.
 	 * 
-	 * @param warriors     ArrayList object containing warriors objects
-	 * @param wizards      ArrayList object containing wizards objects
-	 * @param scanner      Scanner object to get Input of the new URL.
-	 * @param result_index index of the found character
-	 * @param match_found  ArrayList of the found character
+	 * @param charactersList ArrayList object containing Character objects
+	 * @param scanner        Scanner object to get Input of the new URL.
+	 * @param resultIndex    index of the found character
+	 * @param matchFound     ArrayList of the found character
 	 */
-	private void udpateImageURL(ArrayList<Warrior> warriors, ArrayList<Wizard> wizards, Scanner scanner,
-			int result_index, int match_found) {
+	private void udpateImageURL(ArrayList<Character> charactersList, Scanner scanner, int resultIndex) {
 		String input;
 		System.out.println("Entrez une nouvelle URL d'image :");
 		input = scanner.nextLine();
 
-		if (match_found == WIZARD_FOUND) {
-			wizards.get(result_index).setImageUrl(input);
+		charactersList.get(resultIndex).setImageUrl(input);
 
-		} else if (match_found == WARRIOR_FOUND) {
-			warriors.get(result_index).setImageUrl(input);
-		}
 	}
 
 	/**
 	 * Updates the selected character's attack power.
 	 * 
-	 * @param warriors     ArrayList object containing warriors objects
-	 * @param wizards      ArrayList object containing wizards objects
-	 * @param scanner      Scanner object to get Input of the new attack power.
-	 * @param result_index index of the found character
-	 * @param match_found  ArrayList of the found character
+	 * @param charactersList ArrayList object containing Character objects
+	 * @param scanner        Scanner object to get Input of the new attack power.
+	 * @param resultIndex    index of the found character
+	 * @param matchFound     ArrayList of the found character
 	 */
-	private void updateAttackPower(ArrayList<Warrior> warriors, ArrayList<Wizard> wizards, Scanner scanner,
-			int result_index, int int_input, int match_found) {
+	private void updateAttackPower(ArrayList<Character> charactersList, Scanner scanner, int resultIndex,
+			int intInput) {
 		boolean AP_ok = false;
 		while (!AP_ok) {
+
 			System.out.println("Entrez une nouvelle valeur de puissance d'attaque (Warrior: 5 à 10, Wizard 8 à 15):");
 			try {
-				int_input = scanner.nextInt();
+				intInput = scanner.nextInt();
 			} catch (InputMismatchException e) {
 				System.out.println("Mauvais format d'entrée. Recommencez.");
 				continue;
 			}
-			if (match_found == WIZARD_FOUND) {
-				if (Math.min(WIZARD_MAX_ATTACK_POWER, Math.max(int_input, WIZARD_MIN_ATTACK_POWER)) == int_input) {
-					wizards.get(result_index).setAttackPower(int_input);
+
+			if (charactersList.get(resultIndex).getClassName().equals("Wizard")) {
+
+				if (Math.min(Wizard.WIZARD_MAX_ATTACK_POWER,
+						Math.max(intInput, Wizard.WIZARD_MIN_ATTACK_POWER)) == intInput) {
+
+					charactersList.get(resultIndex).setAttackPower(intInput);
 					AP_ok = true;
+
 				} else {
 					System.out.println("Paramètre invalide, recommencez.");
 				}
-			} else if (match_found == WARRIOR_FOUND) {
-				if (Math.min(WARRIOR_MAX_ATTACK_POWER, Math.max(int_input, WARRIOR_MIN_ATTACK_POWER)) == int_input) {
-					warriors.get(result_index).setAttackPower(int_input);
+
+			} else if (charactersList.get(resultIndex).getClassName().equals("Warrior")) {
+
+				if (Math.min(Warrior.WARRIOR_MAX_ATTACK_POWER,
+						Math.max(intInput, Warrior.WARRIOR_MIN_ATTACK_POWER)) == intInput) {
+
+					charactersList.get(resultIndex).setAttackPower(intInput);
 					AP_ok = true;
+
 				} else {
 					System.out.println("Paramètre invalide, recommencez.");
 				}
@@ -185,34 +178,41 @@ public class CharacterUpdate implements SearchConstInterface, CharacterConstInte
 	/**
 	 * Updates the selected character's life.
 	 * 
-	 * @param warriors     ArrayList object containing warriors objects
-	 * @param wizards      ArrayList object containing wizards objects
-	 * @param scanner      Scanner object to get Input of the new life.
-	 * @param result_index index of the found character
-	 * @param match_found  ArrayList of the found character
+	 * @param charactersList ArrayList object containing Character objects
+	 * @param scanner        Scanner object to get Input of the new life.
+	 * @param resultIndex    index of the found character
+	 * @param matchFound     ArrayList of the found character
 	 */
-	private void updateLife(ArrayList<Warrior> warriors, ArrayList<Wizard> wizards, Scanner scanner,
-			int result_index, int int_input, int match_found) {
+	private void updateLife(ArrayList<Character> charactersList, Scanner scanner, int resultIndex, int intInput) {
 		boolean life_ok = false;
 		while (!life_ok) {
+
 			System.out.println("Entrez une nouvelle valeur de vie (Warrior: 5 à 10, Wizard 3 à 6):");
 			try {
-				int_input = scanner.nextInt();
+				intInput = scanner.nextInt();
 			} catch (InputMismatchException e) {
 				System.out.println("Mauvais format d'entrée. Recommencez.");
 				continue;
 			}
-			if (match_found == WIZARD_FOUND) {
-				if (Math.min(WIZARD_MAX_LIFE, Math.max(int_input, WIZARD_MIN_LIFE)) == int_input) {
-					wizards.get(result_index).setLife(int_input);
+
+			if (charactersList.get(resultIndex).getClassName().equals("Wizard")) {
+
+				if (Math.min(Wizard.WIZARD_MAX_LIFE, Math.max(intInput, Wizard.WIZARD_MIN_LIFE)) == intInput) {
+
+					charactersList.get(resultIndex).setLife(intInput);
 					life_ok = true;
+
 				} else {
 					System.out.println("Paramètre invalide, recommencez.");
 				}
-			} else if (match_found == WARRIOR_FOUND) {
-				if (Math.min(WARRIOR_MAX_LIFE, Math.max(int_input, WARRIOR_MIN_LIFE)) == int_input) {
-					warriors.get(result_index).setLife(int_input);
+
+			} else if (charactersList.get(resultIndex).getClassName().equals("Warrior")) {
+
+				if (Math.min(Warrior.WARRIOR_MAX_LIFE, Math.max(intInput, Warrior.WARRIOR_MIN_LIFE)) == intInput) {
+
+					charactersList.get(resultIndex).setLife(intInput);
 					life_ok = true;
+
 				} else {
 					System.out.println("Paramètre invalide, recommencez.");
 				}
@@ -224,23 +224,15 @@ public class CharacterUpdate implements SearchConstInterface, CharacterConstInte
 	/**
 	 * Updates the selected character's name.
 	 * 
-	 * @param warriors     ArrayList object containing warriors objects
-	 * @param wizards      ArrayList object containing wizards objects
-	 * @param scanner      Scanner object to get Input of the new name.
-	 * @param result_index index of the found character
-	 * @param match_found  ArrayList of the found character
+	 * @param charactersList ArrayList object containing Character objects
+	 * @param scanner        Scanner object to get Input of the new name.
+	 * @param result_index   index of the found character
+	 *
 	 */
-	private void updateName(ArrayList<Warrior> warriors, ArrayList<Wizard> wizards, Scanner scanner,
-			int result_index, int match_found) {
+	private void updateName(ArrayList<Character> charactersList, Scanner scanner, int result_index) {
 		String input;
 		System.out.println("Entrez un nouveau nom :");
 		input = scanner.nextLine();
-
-		if (match_found == WIZARD_FOUND) {
-			wizards.get(result_index).setName(input);
-
-		} else if (match_found == WARRIOR_FOUND) {
-			warriors.get(result_index).setName(input);
-		}
+		charactersList.get(result_index).setName(input);
 	}
 }

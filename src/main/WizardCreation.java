@@ -5,7 +5,7 @@ package main;
  * 
  */
 
-public class WizardCreation {
+public class WizardCreation implements WizardCreationInterface {
 
 	/**
 	 * Displays Wizard Object infos in console.
@@ -14,8 +14,8 @@ public class WizardCreation {
 	 * 
 	 */
 	private void charInfosPrint(Wizard wizard) {
-		System.out.println("Création du personnage " + wizard.getName() + " " + wizard.getClass_name() + " "
-				+ wizard.getRace_name() + "\nLife : " + wizard.getLife() + " Attack power : "
+		System.out.println("Création du personnage " + wizard.getName() + " " + wizard.getClassName() + " "
+				+ wizard.getRaceName() + "\nLife : " + wizard.getLife() + " Attack power : "
 				+ wizard.getAttackPower());
 	}
 
@@ -24,21 +24,22 @@ public class WizardCreation {
 	 *
 	 * @param name         object name.
 	 * @param life         object life.
-	 * @param attack_force object attack force.
+	 * @param attackForce object attack force.
 	 * @return Wizard returns a new Wizard Object.
 	 */
-	public Wizard wizardCreation(String name, int life, int attack_force, String race) {
+	@Override
+	public Wizard wizardCreation(String name, int life, int attackForce, String race) {
 		// Tries to create new Wizard object with all parameters.
 		Wizard wizard;
 		try {
-			wizard = new Wizard(name, life, attack_force, race);
-		} catch (IllegalArgumentException wizard_constructor_exception_1) {
+			wizard = new Wizard(name, life, attackForce, race);
+		} catch (IllegalArgumentException wizardConstructorException_1) {
 			System.out.println(
 					"Création échouée. Entrée de vie/force d'attaque invalide.\nEssai avec le paramètre nom uniquement.\nValeurs de vie et de force par défaut. Vous pourrez modifier votre personnage par la suite.");
 			// If fail, tries to create new Wizard object with name parameter.
 			try {
 				wizard = new Wizard(name);
-			} catch (IllegalArgumentException wizard_constructor_exception_2) {
+			} catch (IllegalArgumentException wizardConstructorException_2) {
 				System.out.println(
 						"Création échouée. Entrée de vie/force d'attaque invalide.\nEssai avec le paramètre nom uniquement.\nValeurs de vie et de force par défaut. Vous pourrez modifier votre personnage par la suite.");
 				// If fail, creates new Wizard object without parameter.

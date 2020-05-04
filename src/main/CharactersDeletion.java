@@ -7,86 +7,68 @@ import java.util.Scanner;
  * Character Deletion Class.
  *
  */
-public class CharactersDeletion implements SearchConstInterface {
-
+public class CharactersDeletion implements CharactersDeletionInterface {
 
 	/**
 	 * Search by name through the characters lists and deletes selected character.
 	 *
-	 * @param warriors the ArrayList containing Warriors Objects.
-	 * @param wizards  the ArrayList containing Wizards Objects.
-	 * @param scanner  a Scanner Object used to get inputs.
+	 * @param charactersList the ArrayList containing Character Objects.
+	 * @param scanner        a Scanner Object used to get inputs.
 	 *
 	 */
-	public void characterDeletion(ArrayList<Warrior> warriors, ArrayList<Wizard> wizards, Scanner scanner) {
+	@Override
+	public void characterDeletion(ArrayList<Character> charactersList, Scanner scanner) {
 
 		/** Search result, index of found object */
-		int result_index;
-
-		/** Search result array, contains [match_status, match_index] */
-		int[] result_match_index = new int[2];
-
-		/** Search result, match type (Warrior/Wizard/None) */
-		int match_found = NO_MATCH_FOUND;
+		int resultIndex;
 
 		while (true) {
 
 			System.out.println("Quel personnage souhaitez-vous supprimer ? Valider un champ vide pour quitter.");
 			String input = scanner.nextLine();
 
-			if (input.equals(EMPTY_STRING)) {
+			if (input.isEmpty()) {
 				System.out.println("Retour au menu précédent.");
 				break;
 			}
 
-			CharacterSearch char_search = new CharacterSearch();
-			result_match_index = char_search.characterSearch(wizards, warriors, input);
-			match_found = result_match_index[0];
-			result_index = result_match_index[1];
+			CharacterSearchInterface charSearch = new CharacterSearch();
+			resultIndex = charSearch.characterSearch(charactersList, input);
 
-			if (match_found == NO_MATCH_FOUND) {
+			if (resultIndex == -1) {
 				System.out.println("Aucun personnage avec ce nom n'a été trouvé.");
 				continue;
 			} else {
-				deleteCharacter(warriors, wizards, scanner, result_index, match_found);
+				deleteCharacter(charactersList, scanner, resultIndex);
 			}
 		}
 	}
 
 	/**
-	 * Asks for Deletion confirmation and deletes characters.
+	 * Asks for Deletion confirmation and deletes characters. s
 	 * 
-	 * @param warriors     ArrayList of warrior characters
-	 * @param wizards      ArrayList of wizards characters
-	 * @param scanner      Scanner object used to get Confirmation Input.
-	 * @param result_index index of found character in one of ArrayLists
-	 * @param match_found  which ArrayList contains the found character
+	 * @param charactersList ArrayList of Character characters
+	 * @param scanner        Scanner object used to get Confirmation Input.
+	 * @param resultIndex    index of found character in one of ArrayLists
 	 */
-	private void deleteCharacter(ArrayList<Warrior> warriors, ArrayList<Wizard> wizards, Scanner scanner,
-			int result_index, int match_found) {
+	private void deleteCharacter(ArrayList<Character> charactersList, Scanner scanner, int resultIndex) {
 		String input;
-		boolean confirmation_command_ok = false;
-		while (!confirmation_command_ok) {
+		boolean confirmationCommandOk = false;
+		while (!confirmationCommandOk) {
 
 			System.out.println("Confirmer la suppression ? OUI ou NON");
 			input = scanner.nextLine();
 
 			if (input.equals("OUI")) {
 
-				if (match_found == WIZARD_FOUND) {
-					wizards.remove(result_index);
-
-				} else if (match_found == WARRIOR_FOUND) {
-					warriors.remove(result_index);
-				}
-
+				charactersList.remove(resultIndex);
 				System.out.println("Personnage supprimé !");
-				confirmation_command_ok = true;
+				confirmationCommandOk = true;
 
 			} else if (input.equals("NON")) {
 
 				System.out.println("Opération annulée.");
-				confirmation_command_ok = true;
+				confirmationCommandOk = true;
 
 			} else {
 				System.out.println("Commande non reconnue.");

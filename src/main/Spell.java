@@ -4,7 +4,7 @@ package main;
  * Spell object Data class.
  * 
  */
-public class Spell {
+public class Spell implements SpellClassInterface {
 	
 	/** Spell object name */
 	private String name;
@@ -16,23 +16,27 @@ public class Spell {
 		this("Spark", 1);
 	}
 
-	public Spell(String name_arg, int damage_arg) {
+	public Spell(String name_arg, int damageArg) {
 		name = name_arg;
-		damage = damage_arg;
+		damage = damageArg;
 	}
 
-	public void setName(String new_name) {
-		this.name = new_name;
+	@Override
+	public void setName(String newName) {
+		this.name = newName;
 	}
 
+	@Override
 	public String getName() {
 		return this.name;
 	}
 
-	public void setDamage(int new_damage) {
-		this.damage = new_damage;
+	@Override
+	public void setDamage(int newDamage) {
+		this.damage = newDamage;
 	}
 
+	@Override
 	public int getDamage() {
 		return this.damage;
 	}

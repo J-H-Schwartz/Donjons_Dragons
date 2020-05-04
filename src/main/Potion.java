@@ -4,36 +4,40 @@ package main;
  * Potion object Data class.
  * 
  */
-public class Potion {
+public class Potion implements PotionClassInterface {
 
 	/** Potion object name */
 	private String name;
 
 	/** Potion object effect */
-	private int health_increase;
+	private int effect;
 
 	public Potion() {
 		this("Small health potion", 1);
 	}
 
-	public Potion(String name_arg, int health_arg) {
-		name = name_arg;
-		health_increase = health_arg;
+	public Potion(String nameArg, int healthArg) {
+		name = nameArg;
+		effect = healthArg;
 	}
 
-	public void setName(String new_name) {
-		this.name = new_name;
+	@Override
+	public void setName(String newName) {
+		this.name = newName;
 	}
 
+	@Override
 	public String getName() {
 		return this.name;
 	}
 
-	public void setLife(int new_health_increase) {
-		this.health_increase = new_health_increase;
+	@Override
+	public void setLife(int newEffect) {
+		this.effect = newEffect;
 	}
 
+	@Override
 	public int getLife() {
-		return this.health_increase;
+		return this.effect;
 	}
 }
