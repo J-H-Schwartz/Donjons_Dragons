@@ -7,16 +7,13 @@ package main;
 
 public class WarriorCreation {
 
-	private WarriorCreation() {
-	}
-
 	/**
 	 * Displays Warrior Object infos in console.
 	 * 
 	 * @param warrior
 	 * 
 	 */
-	private static void charInfosPrint(Warrior warrior) {
+	private void charInfosPrint(Warrior warrior) {
 		System.out.println("Création du personnage " + warrior.getName() + " " + warrior.getClass_name() + " "
 				+ warrior.getRace_name() + "\nLife : " + warrior.getLife() + " Attack power : "
 				+ warrior.getAttackPower());
@@ -30,7 +27,7 @@ public class WarriorCreation {
 	 * @param attack_force object attack force.
 	 * @return Warrior returns a new Warrior Object.
 	 */
-	public static Warrior warriorCreation(String name, int life, int attack_force, String race) {
+	public Warrior warriorCreation(String name, int life, int attack_force, String race) {
 		Warrior warrior;
 		// Tries to create new Warrior object with all parameters.
 		try {

@@ -24,8 +24,6 @@ public class CharacterUpdate implements SearchConstInterface, CharacterConstInte
 		static final String RETURN = "R";
 	}
 
-	private CharacterUpdate() {
-	}
 
 	/**
 	 * Search by name through the characters lists and allow to update found
@@ -36,7 +34,7 @@ public class CharacterUpdate implements SearchConstInterface, CharacterConstInte
 	 * @param scanner  a Scanner Object used to get inputs.
 	 *
 	 */
-	public static void characterUpdate(ArrayList<Warrior> warriors, ArrayList<Wizard> wizards, Scanner scanner) {
+	public void characterUpdate(ArrayList<Warrior> warriors, ArrayList<Wizard> wizards, Scanner scanner) {
 
 		/** Search result, index of found object */
 		int result_index = 0;
@@ -59,7 +57,8 @@ public class CharacterUpdate implements SearchConstInterface, CharacterConstInte
 				break;
 			}
 
-			result_match_index = CharacterSearch.characterSearch(wizards, warriors, input);
+			CharacterSearch char_search = new CharacterSearch();
+			result_match_index = char_search.characterSearch(wizards, warriors, input);
 			match_found = result_match_index[0];
 			result_index = result_match_index[1];
 
@@ -101,7 +100,7 @@ public class CharacterUpdate implements SearchConstInterface, CharacterConstInte
 	 * @param scanner Scanner object to get Input
 	 * @return String containing the selected field
 	 */
-	private static String askForUpdateFieldSelection(Scanner scanner) {
+	private String askForUpdateFieldSelection(Scanner scanner) {
 		String input;
 		System.out.println(
 				"Quel champ souhaitez-vous modifier ?\n(N)om\n(V)ie\n(F)orce d'attaque\n(U)rl d'image\n(R)etour");
@@ -115,7 +114,7 @@ public class CharacterUpdate implements SearchConstInterface, CharacterConstInte
 	 * @param scanner Scanner object to get Input
 	 * @return String containing the character name in order to research.
 	 */
-	private static String askForCharacterName(Scanner scanner) {
+	private String askForCharacterName(Scanner scanner) {
 		System.out.println("Quel personnage souhaitez-vous modifier ? Valider un champ vide pour quitter.");
 		String input = scanner.nextLine();
 		return input;
@@ -130,7 +129,7 @@ public class CharacterUpdate implements SearchConstInterface, CharacterConstInte
 	 * @param result_index index of the found character
 	 * @param match_found  ArrayList of the found character
 	 */
-	private static void udpateImageURL(ArrayList<Warrior> warriors, ArrayList<Wizard> wizards, Scanner scanner,
+	private void udpateImageURL(ArrayList<Warrior> warriors, ArrayList<Wizard> wizards, Scanner scanner,
 			int result_index, int match_found) {
 		String input;
 		System.out.println("Entrez une nouvelle URL d'image :");
@@ -153,7 +152,7 @@ public class CharacterUpdate implements SearchConstInterface, CharacterConstInte
 	 * @param result_index index of the found character
 	 * @param match_found  ArrayList of the found character
 	 */
-	private static void updateAttackPower(ArrayList<Warrior> warriors, ArrayList<Wizard> wizards, Scanner scanner,
+	private void updateAttackPower(ArrayList<Warrior> warriors, ArrayList<Wizard> wizards, Scanner scanner,
 			int result_index, int int_input, int match_found) {
 		boolean AP_ok = false;
 		while (!AP_ok) {
@@ -192,7 +191,7 @@ public class CharacterUpdate implements SearchConstInterface, CharacterConstInte
 	 * @param result_index index of the found character
 	 * @param match_found  ArrayList of the found character
 	 */
-	private static void updateLife(ArrayList<Warrior> warriors, ArrayList<Wizard> wizards, Scanner scanner,
+	private void updateLife(ArrayList<Warrior> warriors, ArrayList<Wizard> wizards, Scanner scanner,
 			int result_index, int int_input, int match_found) {
 		boolean life_ok = false;
 		while (!life_ok) {
@@ -231,7 +230,7 @@ public class CharacterUpdate implements SearchConstInterface, CharacterConstInte
 	 * @param result_index index of the found character
 	 * @param match_found  ArrayList of the found character
 	 */
-	private static void updateName(ArrayList<Warrior> warriors, ArrayList<Wizard> wizards, Scanner scanner,
+	private void updateName(ArrayList<Warrior> warriors, ArrayList<Wizard> wizards, Scanner scanner,
 			int result_index, int match_found) {
 		String input;
 		System.out.println("Entrez un nouveau nom :");

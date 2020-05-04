@@ -58,13 +58,16 @@ public class MainMenu {
 			String[] split_input = input.split("-");
 			input = split_input[1];
 			if (input.equals(MainMenuConst.CREATION)) {
-				CharacterCreation.characterCreation(warriors, wizards, scanner);
+				CharacterCreation charCreate = new CharacterCreation();
+				charCreate.characterCreation(warriors, wizards, scanner);
 
 			} else if (input.equals(MainMenuConst.RESEARCH)) {
-				CharacterSearch.search(warriors, wizards, scanner);
+				CharacterSearch char_search = new CharacterSearch();
+				char_search.characterSearch(wizards, warriors, input);
 
 			} else if (input.equals(MainMenuConst.UPDATE)) {
-				CharacterUpdate.characterUpdate(warriors, wizards, scanner);
+				CharacterUpdate char_update = new CharacterUpdate();
+				char_update.characterUpdate(warriors, wizards, scanner);
 
 			} else if (input.equals(MainMenuConst.LIST)) {
 				// CharactersListShow.characterShow(warriors, wizards, scanner);
@@ -74,7 +77,8 @@ public class MainMenu {
 				input = split_input[1];
 
 			} else if (input.equals(MainMenuConst.DELETE)) {
-				CharactersDeletion.characterDeletion(warriors, wizards, scanner);
+				CharactersDeletion char_del = new CharactersDeletion();
+				char_del.characterDeletion(warriors, wizards, scanner);
 
 			} else if (input.equals(MainMenuConst.QUIT)) {
 				System.out.println("Programme terminé.");

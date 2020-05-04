@@ -6,20 +6,6 @@ package main;
  */
 public class Wizard extends Race implements SearchConstInterface, CharacterConstInterface {
 
-	private String class_name;
-
-	/** Wizard object name */
-	private String name;
-
-	/** Wizard object life */
-	private int life;
-
-	/** Wizard object Attack power */
-	private int attack_power;
-
-	/** Wizard object Image url */
-	private String image_url;
-
 	/** Wizard object Spell object */
 	public Spell spell;
 
@@ -52,75 +38,11 @@ public class Wizard extends Race implements SearchConstInterface, CharacterConst
 			this.image_url = "./medias/ElveWizard.png";
 		}
 	}
-
+	
 	@Override
 	public String toString() {
-		return "Personnage " + this.name + " " + this.getRace_name() + " " + this.class_name + "\nLife : " + this.life
-				+ " Attack Power : " + this.attack_power + " " + this.spell.getName() + " Potion : "
+		return "Personnage " + this.name + " " + this.race_name + " " + this.class_name + "\nLife : " + this.life
+				+ " Attack Power : " + this.attack_power + " Weapon : " + this.spell.getName() + " Shield : "
 				+ this.potion.getName();
-	}
-
-	public String getRaceName() {
-		return this.getRace_name();
-	}
-
-	public void setName(String new_name) {
-		this.name = new_name;
-	}
-
-	public String getName() {
-		return this.name;
-	}
-
-	public void setLife(int new_life) {
-		this.life = new_life;
-	}
-
-	public int getLife() {
-		return this.life;
-	}
-
-	public void setAttackPower(int new_attack_power) {
-		this.attack_power = new_attack_power;
-	}
-
-	public int getAttackPower() {
-		return this.attack_power;
-	}
-
-	public void setImageUrl(String new_image_url) {
-		this.image_url = new_image_url;
-	}
-
-	public String getImageUrl() {
-		return this.image_url;
-	}
-
-	public String getClass_name() {
-		return class_name;
-	}
-
-	public void setClass_name(String class_name) {
-		this.class_name = class_name;
-	}
-
-	@Override
-	public RacialSpell getRacial_spell() {
-		return racial_spell;
-	}
-
-	@Override
-	public void setRacial_spell(RacialSpell racial_spell) {
-		this.racial_spell = racial_spell;
-	}
-
-	@Override
-	public String getRace_name() {
-		return race_name;
-	}
-
-	@Override
-	public void setRace_name(String race_name) {
-		this.race_name = race_name;
 	}
 }

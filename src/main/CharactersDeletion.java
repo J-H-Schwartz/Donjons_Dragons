@@ -9,8 +9,6 @@ import java.util.Scanner;
  */
 public class CharactersDeletion implements SearchConstInterface {
 
-	private CharactersDeletion() {
-	}
 
 	/**
 	 * Search by name through the characters lists and deletes selected character.
@@ -20,7 +18,7 @@ public class CharactersDeletion implements SearchConstInterface {
 	 * @param scanner  a Scanner Object used to get inputs.
 	 *
 	 */
-	public static void characterDeletion(ArrayList<Warrior> warriors, ArrayList<Wizard> wizards, Scanner scanner) {
+	public void characterDeletion(ArrayList<Warrior> warriors, ArrayList<Wizard> wizards, Scanner scanner) {
 
 		/** Search result, index of found object */
 		int result_index;
@@ -41,7 +39,8 @@ public class CharactersDeletion implements SearchConstInterface {
 				break;
 			}
 
-			result_match_index = CharacterSearch.characterSearch(wizards, warriors, input);
+			CharacterSearch char_search = new CharacterSearch();
+			result_match_index = char_search.characterSearch(wizards, warriors, input);
 			match_found = result_match_index[0];
 			result_index = result_match_index[1];
 
@@ -63,7 +62,7 @@ public class CharactersDeletion implements SearchConstInterface {
 	 * @param result_index index of found character in one of ArrayLists
 	 * @param match_found  which ArrayList contains the found character
 	 */
-	private static void deleteCharacter(ArrayList<Warrior> warriors, ArrayList<Wizard> wizards, Scanner scanner,
+	private void deleteCharacter(ArrayList<Warrior> warriors, ArrayList<Wizard> wizards, Scanner scanner,
 			int result_index, int match_found) {
 		String input;
 		boolean confirmation_command_ok = false;

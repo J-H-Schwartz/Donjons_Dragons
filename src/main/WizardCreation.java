@@ -7,16 +7,13 @@ package main;
 
 public class WizardCreation {
 
-	private WizardCreation() {
-	}
-
 	/**
 	 * Displays Wizard Object infos in console.
 	 * 
 	 * @param wizard
 	 * 
 	 */
-	private static void charInfosPrint(Wizard wizard) {
+	private void charInfosPrint(Wizard wizard) {
 		System.out.println("Création du personnage " + wizard.getName() + " " + wizard.getClass_name() + " "
 				+ wizard.getRace_name() + "\nLife : " + wizard.getLife() + " Attack power : "
 				+ wizard.getAttackPower());
@@ -30,7 +27,7 @@ public class WizardCreation {
 	 * @param attack_force object attack force.
 	 * @return Wizard returns a new Wizard Object.
 	 */
-	public static Wizard wizardCreation(String name, int life, int attack_force, String race) {
+	public Wizard wizardCreation(String name, int life, int attack_force, String race) {
 		// Tries to create new Wizard object with all parameters.
 		Wizard wizard;
 		try {

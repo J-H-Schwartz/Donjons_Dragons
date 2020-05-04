@@ -1,7 +1,6 @@
 package main;
 
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -21,13 +20,10 @@ public class CharacterCreation {
 	private static final String QUIT = "Q";
 
 	/** Wizard object for creation */
-	private static Wizard wizard;
+	private Wizard wizard;
 
 	/** Warrior object for creation */
-	private static Warrior warrior;
-
-	private CharacterCreation() {
-	}
+	private Warrior warrior;
 
 	/**
 	 * Get inputs in order to create new characters.
@@ -37,8 +33,7 @@ public class CharacterCreation {
 	 * @param scanner  a Scanner Object used to get inputs.
 	 *
 	 */
-	public static void characterCreation(ArrayList<Warrior> warriors, ArrayList<Wizard> wizards, Scanner scanner) {
-
+	public void characterCreation(ArrayList<Warrior> warriors, ArrayList<Wizard> wizards, Scanner scanner) {
 		WindowedIHM.createAndShowGUI("C");
 		String input = WindowedIHM.sendMessage();
 		String[] input_parts = input.split("-");
@@ -72,12 +67,14 @@ public class CharacterCreation {
 		}
 		// Creates selected char with input parameters.
 		if (char_selection.equals(WAR)) {
-			warrior = WarriorCreation.warriorCreation(name_selection, life_selection, attack_power_selection,
+			WarriorCreation warrior_creation = new WarriorCreation();
+			warrior = warrior_creation.warriorCreation(name_selection, life_selection, attack_power_selection,
 					race_selection);
 			// Add new Warrior to warriors ArrayList
 			warriors.add(warrior);
 		} else if (char_selection.equals(WIZ)) {
-			wizard = WizardCreation.wizardCreation(name_selection, life_selection, attack_power_selection,
+			WizardCreation wizard_creation = new WizardCreation();
+			wizard = wizard_creation.wizardCreation(name_selection, life_selection, attack_power_selection,
 					race_selection);
 			// Add new Wizard to wizards ArrayList
 			wizards.add(wizard);

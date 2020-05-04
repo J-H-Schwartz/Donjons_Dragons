@@ -6,21 +6,6 @@ package main;
  */
 public class Warrior extends Race implements SearchConstInterface, CharacterConstInterface {
 
-	/** Warrior class name */
-	private String class_name;
-
-	/** Warrior object name */
-	private String name;
-
-	/** Warrior object life */
-	private int life;
-
-	/** Warrior object Attack Power */
-	private int attack_power;
-
-	/** Warrior object Image url */
-	private String image_url;
-
 	/** Warrior object Weapon object */
 	public Weapon weapon;
 
@@ -56,72 +41,8 @@ public class Warrior extends Race implements SearchConstInterface, CharacterCons
 
 	@Override
 	public String toString() {
-		return "Personnage " + this.name + " " + this.getRace_name() + " " + this.class_name + "\nLife : " + this.life
+		return "Personnage " + this.name + " " + this.race_name + " " + this.class_name + "\nLife : " + this.life
 				+ " Attack Power : " + this.attack_power + " Weapon : " + this.weapon.getName() + " Shield : "
 				+ this.shield.getName();
-	}
-
-	public String getRaceName() {
-		return this.getRace_name();
-	}
-
-	public void setName(String new_name) {
-		this.name = new_name;
-	}
-
-	public String getName() {
-		return this.name;
-	}
-
-	public void setLife(int new_life) {
-		this.life = new_life;
-	}
-
-	public int getLife() {
-		return this.life;
-	}
-
-	public void setAttackPower(int new_attack_power) {
-		this.attack_power = new_attack_power;
-	}
-
-	public int getAttackPower() {
-		return this.attack_power;
-	}
-
-	public void setImageUrl(String new_image_url) {
-		this.image_url = new_image_url;
-	}
-
-	public String getImageUrl() {
-		return this.image_url;
-	}
-
-	public String getClass_name() {
-		return class_name;
-	}
-
-	public void setClass_name(String class_name) {
-		this.class_name = class_name;
-	}
-
-	@Override
-	public RacialSpell getRacial_spell() {
-		return racial_spell;
-	}
-
-	@Override
-	public void setRacial_spell(RacialSpell racial_spell) {
-		this.racial_spell = racial_spell;
-	}
-
-	@Override
-	public String getRace_name() {
-		return race_name;
-	}
-
-	@Override
-	public void setRace_name(String race_name) {
-		this.race_name = race_name;
 	}
 }
