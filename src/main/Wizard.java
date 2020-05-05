@@ -17,11 +17,12 @@ public class Wizard extends Character implements WizardClassInterface {
 
 	/** Wizard min Attack power constant */
 	static final int WIZARD_MIN_ATTACK_POWER = 8;
+	
 	/** Wizard object Spell object */
-	public Spell spell;
+	private Spell spell;
 
 	/** Wizard object Potion object */
-	public Potion potion;
+	private Potion potion;
 
 	public Wizard() {
 		this("Undefined", WIZARD_MIN_LIFE, WIZARD_MIN_ATTACK_POWER, "D");
@@ -55,5 +56,33 @@ public class Wizard extends Character implements WizardClassInterface {
 		return "Personnage " + this.name + " " + this.raceName + " " + this.className + "\nLife : " + this.life
 				+ " Attack Power : " + this.attackPower + " Weapon : " + this.spell.getName() + " Shield : "
 				+ this.potion.getName();
+	}
+
+	/**
+	 * @return the spell
+	 */
+	public Spell getSpell() {
+		return spell;
+	}
+
+	/**
+	 * @param spell the spell to set
+	 */
+	public void setSpell(Spell spell) {
+		this.spell = spell;
+	}
+
+	/**
+	 * @return the potion
+	 */
+	public Potion getPotion() {
+		return potion;
+	}
+
+	/**
+	 * @param potion the potion to set
+	 */
+	public void setPotion(Potion potion) {
+		this.potion = potion;
 	}
 }

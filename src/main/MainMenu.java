@@ -9,7 +9,8 @@ import java.util.Scanner;
  */
 
 public class MainMenu {
-
+	
+	/** Input constant */
 	static final String CREATION = "C";
 	/** Input constant */
 	static final String RESEARCH = "R";

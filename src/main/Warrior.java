@@ -19,10 +19,10 @@ public class Warrior extends Character implements WarriorClassInterface {
 	static final int WARRIOR_MIN_ATTACK_POWER = 5;
 
 	/** Warrior object Weapon object */
-	public Weapon weapon;
+	private Weapon weapon;
 
 	/** Warrior object Shield object */
-	public Shield shield;
+	private Shield shield;
 
 	public Warrior() {
 		this("Undefined", WARRIOR_MIN_LIFE, WARRIOR_MIN_ATTACK_POWER, "D");
@@ -56,5 +56,33 @@ public class Warrior extends Character implements WarriorClassInterface {
 		return "Personnage " + this.name + " " + this.raceName + " " + this.className + "\nLife : " + this.life
 				+ " Attack Power : " + this.attackPower + " Weapon : " + this.weapon.getName() + " Shield : "
 				+ this.shield.getName();
+	}
+
+	/**
+	 * @return the weapon
+	 */
+	public Weapon getWeapon() {
+		return weapon;
+	}
+
+	/**
+	 * @param weapon the weapon to set
+	 */
+	public void setWeapon(Weapon weapon) {
+		this.weapon = weapon;
+	}
+
+	/**
+	 * @return the shield
+	 */
+	public Shield getShield() {
+		return shield;
+	}
+
+	/**
+	 * @param shield the shield to set
+	 */
+	public void setShield(Shield shield) {
+		this.shield = shield;
 	}
 }
