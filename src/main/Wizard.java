@@ -18,10 +18,10 @@ public class Wizard extends Character implements WizardClassInterface {
 	/** Wizard min Attack power constant */
 	static final int WIZARD_MIN_ATTACK_POWER = 8;
 	/** Wizard object Spell object */
-	public SpellClassInterface spell;
+	public Spell spell;
 
 	/** Wizard object Potion object */
-	public PotionClassInterface potion;
+	public Potion potion;
 
 	public Wizard() {
 		this("Undefined", WIZARD_MIN_LIFE, WIZARD_MIN_ATTACK_POWER, "D");

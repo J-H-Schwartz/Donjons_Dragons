@@ -19,10 +19,10 @@ public class Warrior extends Character implements WarriorClassInterface {
 	static final int WARRIOR_MIN_ATTACK_POWER = 5;
 
 	/** Warrior object Weapon object */
-	public WeaponClassInterface weapon;
+	public Weapon weapon;
 
 	/** Warrior object Shield object */
-	public ShieldClassInterface shield;
+	public Shield shield;
 
 	public Warrior() {
 		this("Undefined", WARRIOR_MIN_LIFE, WARRIOR_MIN_ATTACK_POWER, "D");
