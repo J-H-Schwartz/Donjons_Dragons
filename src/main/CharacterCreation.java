@@ -33,7 +33,7 @@ public class CharacterCreation implements CharacterCreationInterface {
 	 */
 	@Override
 	public void characterCreation(ArrayList<Character> charactersList, Scanner scanner) {
-		WindowedIHM.createAndShowGUI("C");
+		WindowedIHM.createAndShowGUI("C", charactersList);
 		String input = WindowedIHM.sendMessage();
 		String[] splittedInput = input.split("-");
 		String charSelection = splittedInput[0];
@@ -55,7 +55,7 @@ public class CharacterCreation implements CharacterCreationInterface {
 //		// Gets Attack_power Selection Input
 //		int attack_power_selection = askForAttackPower(scanner);
 
-		WindowedIHM.createAndShowGUI("C2");
+		WindowedIHM.createAndShowGUI("C2", charactersList);
 		String input2 = WindowedIHM.sendMessage();
 		String[] splittedInput2 = input2.split("-");
 		String nameSelection = splittedInput2[0];

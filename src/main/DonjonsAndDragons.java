@@ -5,15 +5,13 @@ package main;
  * 
  */
 public class DonjonsAndDragons {
-
-	private DonjonsAndDragons() {
-	}
-
+	
 	/**
 	 * Calls program Main menu.
 	 * 
 	 */
 	public static void main(String[] args) {
-		MainMenu.mainMenu();
+		MainMenu dndSession = new MainMenu();
+		dndSession.mainMenu();
 	}
 }

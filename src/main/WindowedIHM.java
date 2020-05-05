@@ -47,13 +47,13 @@ public class WindowedIHM implements ActionListener {
 	static boolean life_ok = false;
 	static boolean ap_ok = false;
 
-	public WindowedIHM(String menu_choice) {
+	public WindowedIHM(String menu_choice, ArrayList<Character> charactersList) {
 		if (menu_choice.equals("C")) {
 			buildCreationFrame1();
 		} else if (menu_choice.equals("C2")) {
 			buildCreationFrame2();
 		} else if (menu_choice.equals("L")) {
-			buildListFrame();
+			buildListFrame(charactersList);
 		} else if (menu_choice.equals("M")) {
 			buildMainMenuFrame();
 		}
@@ -74,7 +74,7 @@ public class WindowedIHM implements ActionListener {
 		b2.setMnemonic(KeyEvent.VK_M);
 		b2.setActionCommand("MM");
 
-		// Use the default text position of CENTER, TRAILING (RIGHT).
+
 		b3 = new JButton("Suppression de personnage");
 		b3.setVerticalTextPosition(AbstractButton.CENTER);
 		b3.setHorizontalTextPosition(AbstractButton.CENTER);
@@ -99,7 +99,6 @@ public class WindowedIHM implements ActionListener {
 		b6.setMnemonic(KeyEvent.VK_U);
 		b6.setActionCommand("QQ");
 
-		// Listen for actions on buttons 1 and 3.
 		b1.addActionListener(this);
 		b2.addActionListener(this);
 		b3.addActionListener(this);
@@ -119,7 +118,7 @@ public class WindowedIHM implements ActionListener {
 		b4.setToolTipText("Rechercher un personnage existant.");
 		b5.setToolTipText("Lister tout les personnages.");
 		b6.setToolTipText("Quitter le programme.");
-		// Add Components to this container, using the default FlowLayout.
+
 		newContentPane.add(b1);
 		newContentPane.add(b2);
 		newContentPane.add(b3);
@@ -128,7 +127,7 @@ public class WindowedIHM implements ActionListener {
 		newContentPane.add(b6);
 	}
 
-	private void buildListFrame() {
+	private void buildListFrame(ArrayList<Character> charactersList) {
 		newContentPane = new JPanel(new GridBagLayout());
 		newContentPane.setBackground(Color.BLACK);
 		GridBagConstraints c1 = new GridBagConstraints();
@@ -140,7 +139,6 @@ public class WindowedIHM implements ActionListener {
 		JTable characters_table = new JTable(tblModel);
 		characters_table.setFillsViewportHeight(true);
 
-		ArrayList<Character> charactersList = MainMenu.getWCharactersList();
 		charactersList.sort(new CharactersListClassSorter());
 		for (int i = 0; i < charactersList.size(); i++) {
 			String name = charactersList.get(i).getName();
@@ -387,13 +385,13 @@ public class WindowedIHM implements ActionListener {
 		newContentPane = new JPanel(new GridLayout(0, 4));
 		newContentPane.setBackground(Color.BLACK);
 		ImageIcon dwarfWarriorImg = createImageIcon(
-				"file:/home/jonathan/Desktop/Repositories/eclipse-workspace/Donjons_Dragons/medias/DwarfWarrior.png");
+				"file:./medias/DwarfWarrior.png");
 		ImageIcon dwarfWizardImg = createImageIcon(
-				"file:/home/jonathan/Desktop/Repositories/eclipse-workspace/Donjons_Dragons/medias/DwarfWizard.png");
+				"file:./medias/DwarfWizard.png");
 		ImageIcon elveWarriorImg = createImageIcon(
-				"file:/home/jonathan/Desktop/Repositories/eclipse-workspace/Donjons_Dragons/medias/ElveWarrior.png");
+				"file:./medias/ElveWarrior.png");
 		ImageIcon elveWizardImg = createImageIcon(
-				"file:/home/jonathan/Desktop/Repositories/eclipse-workspace/Donjons_Dragons/medias/ElveWizard.png");
+				"file:./medias/ElveWizard.png");
 
 		b1 = new JButton("Dwarf Warrior", dwarfWarriorImg);
 		b1.setVerticalTextPosition(AbstractButton.BOTTOM);
@@ -407,7 +405,7 @@ public class WindowedIHM implements ActionListener {
 		b2.setMnemonic(KeyEvent.VK_M);
 		b2.setActionCommand("DD");
 
-		// Use the default text position of CENTER, TRAILING (RIGHT).
+
 		b3 = new JButton("Elve Warrior", elveWarriorImg);
 		b3.setVerticalTextPosition(AbstractButton.BOTTOM);
 		b3.setHorizontalTextPosition(AbstractButton.CENTER);
@@ -420,7 +418,7 @@ public class WindowedIHM implements ActionListener {
 		b4.setMnemonic(KeyEvent.VK_U);
 		b4.setActionCommand("DE");
 
-		// Listen for actions on buttons 1 and 3.
+
 		b1.addActionListener(this);
 		b2.addActionListener(this);
 		b3.addActionListener(this);
@@ -436,7 +434,7 @@ public class WindowedIHM implements ActionListener {
 		b2.setToolTipText("Click here to create a Dwarf Wizard.");
 		b3.setToolTipText("Click here to create a Elve Warrior.");
 		b4.setToolTipText("Click here to create a Elve Wizard.");
-		// Add Components to this container, using the default FlowLayout.
+
 		newContentPane.add(b1);
 		newContentPane.add(b2);
 		newContentPane.add(b3);
@@ -483,8 +481,6 @@ public class WindowedIHM implements ActionListener {
 			}
 		} else if ("C2CAN".equals(e.getActionCommand())) {
 			input = "Q-0-0";
-
-			// C2 Validation
 		}
 	}
 
@@ -519,17 +515,16 @@ public class WindowedIHM implements ActionListener {
 	}
 
 	/**
-	 * Create the GUI and show it. For thread safety, this method should be invoked
-	 * from the event-dispatching thread.
+	 * Creates the GUI and show it. 
+	 * 
 	 */
 
-	public static void createAndShowGUI(String menu_choice) {
+	public static void createAndShowGUI(String menu_choice, ArrayList<Character> charactersList) {
 		ImageIcon top_babkg = createImageIcon(
-				"file:/home/jonathan/Desktop/Repositories/eclipse-workspace/Donjons_Dragons/medias/banner.png");
+				"file:./medias/banner.png");
 		JLabel top = new JLabel();
 		top.setIcon(top_babkg);
 		if (menu_choice.equals("C")) {
-			// Create and set up the window.
 			frame = new JFrame("Character Selection");
 		} else /* if(menu_choice.equals("M")) */ {
 			frame = new JFrame("Character Manager Main Menu");
@@ -538,7 +533,7 @@ public class WindowedIHM implements ActionListener {
 		frame.setPreferredSize(new Dimension(800, 600));
 		frame.setSize(new Dimension(800, 600));
 		// Create and set up the content pane.
-		new WindowedIHM(menu_choice);
+		new WindowedIHM(menu_choice, charactersList);
 		newContentPane.setOpaque(true); // content panes must be opaque
 		frame.getContentPane().setLayout(new BorderLayout());
 		frame.getContentPane().add(top, BorderLayout.NORTH);

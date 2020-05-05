@@ -22,27 +22,28 @@ public class MainMenu {
 	/** Input constant */
 	static final String QUIT = "Q";
 	
-	private static ArrayList<Character> charactersList = new ArrayList<Character>();
+	private ArrayList<Character> charactersList;
 	
-	public static ArrayList<Character> getWCharactersList() {
-		return charactersList;
+	public MainMenu() {
+		charactersList = new ArrayList<Character>();
 	}
-
-	private MainMenu() {
+	
+	public ArrayList<Character> getCharactersList() {
+		return charactersList;
 	}
 
 	/**
 	 * Program main menu.
 	 * 
 	 */
-	public static void mainMenu() {
+	public void mainMenu() {
 
 		/** Scanner Object to get input */
 		Scanner scanner = new Scanner(System.in);
 
 		while (true) {
 			// String input = askForMenuSelection(scanner);
-			WindowedIHM.createAndShowGUI("M");
+			WindowedIHM.createAndShowGUI("M", charactersList);
 			String menuSelection = WindowedIHM.sendMessage();
 			String[] splittedInput = menuSelection.split("-");
 			menuSelection = splittedInput[1];
@@ -61,7 +62,7 @@ public class MainMenu {
 			} else if (menuSelection.equals(LIST)) {
 //				CharactersListShow charShow = new CharactersListShow();
 //				charShow.characterShow(charactersList, scanner);
-				WindowedIHM.createAndShowGUI("L");
+				WindowedIHM.createAndShowGUI("L", charactersList);
 				WindowedIHM.sendMessage();
 
 			} else if (menuSelection.equals(DELETE)) {
