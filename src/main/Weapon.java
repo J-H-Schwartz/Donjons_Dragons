@@ -11,7 +11,6 @@ public class Weapon extends RightHandEquipement {
 	}
 
 	public Weapon(String nameArg, int effectArg) {
-		name = nameArg;
-		effect = effectArg;
+		super(nameArg, effectArg);
 	}
 }

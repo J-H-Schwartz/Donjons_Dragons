@@ -11,8 +11,7 @@ public class Spell extends RightHandEquipement {
 	}
 
 	public Spell(String nameArg, int effectArg) {
-		this.name = nameArg;
-		this.effect = effectArg;
+		super(nameArg, effectArg);
 	}
 
 }

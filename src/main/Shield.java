@@ -11,8 +11,7 @@ public class Shield extends LeftHandEquipement {
 	}
 
 	public Shield(String nameArg, int effectArg) {
-		name = nameArg;
-		effect = effectArg;
+		super(nameArg, effectArg);
 	}
 
 	

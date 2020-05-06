@@ -13,6 +13,10 @@ public class MainMenu {
 	/** Input constant */
 	static final String CREATION = "C";
 	/** Input constant */
+	static final String GENERATE = "G";
+	/** Input constant */
+	static final String PLAY = "N";
+	/** Input constant */
 	static final String RESEARCH = "R";
 	/** Input constant */
 	static final String UPDATE = "M";
@@ -24,9 +28,11 @@ public class MainMenu {
 	static final String QUIT = "Q";
 	
 	private ArrayList<Character> charactersList;
+	private ArrayList<BoardCase> board;
 	
 	public MainMenu() {
 		charactersList = new ArrayList<Character>();
+		board = new ArrayList<BoardCase>();
 	}
 	
 	public ArrayList<Character> getCharactersList() {
@@ -43,11 +49,11 @@ public class MainMenu {
 		Scanner scanner = new Scanner(System.in);
 
 		while (true) {
-			// String input = askForMenuSelection(scanner);
-			WindowedIHM.createAndShowGUI("M", charactersList);
-			String menuSelection = WindowedIHM.sendMessage();
-			String[] splittedInput = menuSelection.split("-");
-			menuSelection = splittedInput[1];
+			String menuSelection = askForMenuSelection(scanner);
+//			WindowedIHM.createAndShowGUI("M", charactersList);
+//			String menuSelection = WindowedIHM.sendMessage();
+//			String[] splittedInput = menuSelection.split("-");
+//			menuSelection = splittedInput[1];
 			if (menuSelection.equals(CREATION)) {
 				CharacterCreationInterface charCreate = new CharacterCreation();
 				charCreate.characterCreation(charactersList, scanner);
@@ -65,6 +71,15 @@ public class MainMenu {
 //				charShow.characterShow(charactersList, scanner);
 				WindowedIHM.createAndShowGUI("L", charactersList);
 				WindowedIHM.sendMessage();
+
+			} else if (menuSelection.equals(PLAY)) {
+				Game gameSession = new Game();
+				gameSession.gameSession(board, charactersList, scanner);
+			
+			} else if (menuSelection.equals(GENERATE)) {
+				
+				GenerateBoard generate = new GenerateBoard();
+				board = generate.generateBoard(board, scanner);
 
 			} else if (menuSelection.equals(DELETE)) {
 				CharactersDeletionInterface charDel = new CharactersDeletion();
@@ -87,10 +102,10 @@ public class MainMenu {
 	 * @param scanner Scanner object to get selection input.
 	 * @return String object containing selection input.
 	 */
-//	private static String askForMenuSelection(Scanner scanner) {
-//		System.out.println(
-//				"(R)echercher personnage\n(L)ister personnages\n(C)réer personnage\n(M)odifier personnage\n(S)upprimer personnage\n(Q)uitter");
-//		String input = scanner.nextLine();
-//		return input;
-//	}
+	private static String askForMenuSelection(Scanner scanner) {
+		System.out.println(
+				"(R)echercher personnage\n(L)ister personnages\n(C)réer personnage\n(M)odifier personnage\n(S)upprimer personnage\n(G)énérer un plateau de jeu\n(N)ouvelle Partie\n(Q)uitter");
+		String input = scanner.nextLine();
+		return input;
+	}
 }

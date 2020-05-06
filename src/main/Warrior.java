@@ -18,12 +18,7 @@ public class Warrior extends Character implements WarriorClassInterface {
 	/** Warrior max Attack power constant */
 	static final int WARRIOR_MIN_ATTACK_POWER = 5;
 
-	/** Warrior object Weapon object */
-	private Weapon weapon;
-
-	/** Warrior object Shield object */
-	private Shield shield;
-
+	
 	public Warrior() {
 		this("Undefined", WARRIOR_MIN_LIFE, WARRIOR_MIN_ATTACK_POWER, "D");
 	}
@@ -42,8 +37,8 @@ public class Warrior extends Character implements WarriorClassInterface {
 		this.name = nameArg;
 		this.life = lifeArg;
 		this.attackPower = attackPowerArg;
-		this.weapon = new Weapon();
-		this.shield = new Shield();
+		this.rightHand = new Weapon();
+		this.leftHand = new Shield();
 		if (raceChoice.equals("D")) {
 			this.imageUrl = "./medias/DwarfWarrior.png";
 		} else if (raceChoice.equals("E")) {
@@ -54,35 +49,35 @@ public class Warrior extends Character implements WarriorClassInterface {
 	@Override
 	public String toString() {
 		return "Personnage " + this.name + " " + this.raceName + " " + this.className + "\nLife : " + this.life
-				+ " Attack Power : " + this.attackPower + " Weapon : " + this.weapon.getName() + " Shield : "
-				+ this.shield.getName();
+				+ " Attack Power : " + this.attackPower + " Weapon : " + this.rightHand.getName() + " Shield : "
+				+ this.leftHand.getName();
 	}
 
 	/**
 	 * @return the weapon
 	 */
-	public Weapon getWeapon() {
-		return weapon;
+	public RightHandEquipement getWeapon() {
+		return rightHand;
 	}
 
 	/**
 	 * @param weapon the weapon to set
 	 */
 	public void setWeapon(Weapon weapon) {
-		this.weapon = weapon;
+		this.rightHand = weapon;
 	}
 
 	/**
 	 * @return the shield
 	 */
-	public Shield getShield() {
-		return shield;
+	public LeftHandEquipement getShield() {
+		return leftHand;
 	}
 
 	/**
 	 * @param shield the shield to set
 	 */
 	public void setShield(Shield shield) {
-		this.shield = shield;
+		this.leftHand = shield;
 	}
 }

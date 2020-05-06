@@ -11,8 +11,7 @@ public class Potion extends LeftHandEquipement {
 	}
 
 	public Potion(String nameArg, int effectArg) {
-		name = nameArg;
-		effect = effectArg;
+		super(nameArg, effectArg);
 	}
 
 }

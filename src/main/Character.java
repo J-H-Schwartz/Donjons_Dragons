@@ -24,8 +24,16 @@ abstract class Character implements CharacterClassInterface {
 	/** Character object Race Name */
 	protected String raceName;
 
+	/** Warrior object Weapon object */
+	protected RightHandEquipement rightHand;
+
+	/** Warrior object Shield object */
+	protected LeftHandEquipement leftHand;
+
 	/** Character object Racial Spell */
 	protected RacialSpellInterface racialSpell;
+
+	protected int boardPosition;
 
 	public Character(String raceChoice) {
 		if (raceChoice.equals("D")) {
@@ -51,6 +59,7 @@ abstract class Character implements CharacterClassInterface {
 				e.printStackTrace();
 			}
 		}
+		boardPosition = -1;
 	}
 
 	@Override
@@ -65,7 +74,11 @@ abstract class Character implements CharacterClassInterface {
 
 	@Override
 	public void setLife(int newLife) {
-		this.life = newLife;
+		if (newLife > 10) {
+			this.life = 10;
+		} else {
+			this.life = newLife;
+		}
 	}
 
 	@Override
@@ -75,7 +88,11 @@ abstract class Character implements CharacterClassInterface {
 
 	@Override
 	public void setAttackPower(int newAttackPower) {
-		this.attackPower = newAttackPower;
+		if (newAttackPower > 10) {
+			this.attackPower = 10;
+		} else {
+			this.attackPower = newAttackPower;
+		}
 	}
 
 	@Override
@@ -121,5 +138,47 @@ abstract class Character implements CharacterClassInterface {
 	@Override
 	public void setRaceName(String raceName) {
 		this.raceName = raceName;
+	}
+
+	/**
+	 * @return the rightHand
+	 */
+	public RightHandEquipement getRightHand() {
+		return rightHand;
+	}
+
+	/**
+	 * @param rightHand the rightHand to set
+	 */
+	public void setRightHand(RightHandEquipement rightHand) {
+		this.rightHand = rightHand;
+	}
+
+	/**
+	 * @return the leftHand
+	 */
+	public LeftHandEquipement getLeftHand() {
+		return leftHand;
+	}
+
+	/**
+	 * @param leftHand the leftHand to set
+	 */
+	public void setLeftHand(LeftHandEquipement leftHand) {
+		this.leftHand = leftHand;
+	}
+
+	/**
+	 * @return the boardPosition
+	 */
+	public int getBoardPosition() {
+		return boardPosition;
+	}
+
+	/**
+	 * @param boardPosition the boardPosition to set
+	 */
+	public void setBoardPosition(int boardPosition) {
+		this.boardPosition = boardPosition;
 	}
 }

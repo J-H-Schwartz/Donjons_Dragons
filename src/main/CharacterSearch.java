@@ -11,7 +11,7 @@ import java.util.Scanner;
  */
 public class CharacterSearch implements CharacterSearchInterface {
 
-	/**
+	/*
 	 * Displays Character Object Image.
 	 *
 	 * @param character the Character object from which you want to show image.

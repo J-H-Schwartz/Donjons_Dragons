@@ -1,6 +1,3 @@
-/**
- * 
- */
 package main;
 
 /**
@@ -8,9 +5,15 @@ package main;
  *
  */
 abstract class RightHandEquipement implements RightHandEquipementInterface {
+	
 	protected String name;
 	protected int effect;
 	
+	public RightHandEquipement(String nameArg, int effectArg) {
+		name = nameArg;
+		effect = effectArg;
+	}
+
 	@Override
 	public void setName(String newName) {
 		this.name = newName;
