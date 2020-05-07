@@ -7,10 +7,10 @@ import java.util.Scanner;
 
 import org.junit.jupiter.api.Test;
 
-import main.BoardCase;
-import main.GenerateBoard;
-import main.Character;
-import main.Warrior;
+import characters.Character;
+import characters.Warrior;
+import gameboard.BoardCase;
+import gameboard.GenerateBoard;
 
 class TestCases {
 

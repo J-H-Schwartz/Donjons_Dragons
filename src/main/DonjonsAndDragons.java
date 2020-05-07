@@ -1,5 +1,7 @@
 package main;
 
+import menus.MainMenu;
+
 /**
  * Main game class, program Entry point.
  * 

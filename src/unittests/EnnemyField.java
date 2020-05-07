@@ -1,6 +1,6 @@
 package unittests;
 
-import main.Warrior;
+import characters.Warrior;
 
 public class EnnemyField implements Field{
 	
