@@ -1,11 +1,11 @@
 package gameboard;
 
-import gamecore.Ennemi;
-import gamecore.EnnemiChicken;
-import gamecore.EnnemiGoblin;
-import gamecore.EnnemiOgre;
-import gamecore.EnnemiOrc;
-import gamecore.EnnemiTroll;
+import ennemies.Ennemi;
+import ennemies.EnnemiChicken;
+import ennemies.EnnemiGoblin;
+import ennemies.EnnemiOgre;
+import ennemies.EnnemiOrc;
+import ennemies.EnnemiTroll;
 import main.GetRandomInt;
 
 public class BoardCaseEnnemy extends BoardCase {

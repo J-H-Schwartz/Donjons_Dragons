@@ -1,4 +1,4 @@
-package gamecore;
+package ennemies;
 
 public class EnnemiGoblin extends Ennemi{
 
