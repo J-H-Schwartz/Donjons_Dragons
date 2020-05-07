@@ -25,4 +25,18 @@ public class BoardCaseEnnemy extends BoardCase {
 			this.ennemi = new EnnemiChicken();
 		}
 	}
+
+	/**
+	 * @return the ennemi
+	 */
+	public Ennemi getEnnemi() {
+		return ennemi;
+	}
+
+	/**
+	 * @param ennemi the ennemi to set
+	 */
+	public void setEnnemi(Ennemi ennemi) {
+		this.ennemi = ennemi;
+	}
 }

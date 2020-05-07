@@ -4,7 +4,7 @@ package main;
  * Character abstract SuperClass
  *
  */
-abstract class Character implements CharacterClassInterface {
+public abstract class Character implements CharacterClassInterface {
 
 	/** Character class name */
 	protected String className;
@@ -76,6 +76,8 @@ abstract class Character implements CharacterClassInterface {
 	public void setLife(int newLife) {
 		if (newLife > 10) {
 			this.life = 10;
+		} else if (newLife < 0) {
+			this.life = 0;
 		} else {
 			this.life = newLife;
 		}
